@@ -1,7 +1,7 @@
 "use server";
 import {permanentRedirect, RedirectType} from "next/navigation";
+import type {Policy} from "@repo/utils/policies";
 import {getGrantedPoliciesApi} from "src/actions/core/AccountService/actions";
-import type {Policy} from "src/utils/page-policy/utils";
 
 export default async function PagePolicy({
   requiredPolicies,

@@ -39,6 +39,9 @@ importers:
       '@auth/core':
         specifier: ^0.30.0
         version: 0.30.0
+      '@ayasofyazilim/core-saas':
+        specifier: latest
+        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
       '@ayasofyazilim/tahsilet-saas':
         specifier: latest
         version: 0.0.1(magicast@0.3.5)(openapi-types@12.1.3)
@@ -688,9 +691,9 @@ importers:
 
   packages/ui:
     dependencies:
-      '@ayasofyazilim/saas':
-        specifier: 0.0.132
-        version: 0.0.132(magicast@0.3.5)(openapi-types@12.1.3)
+      '@ayasofyazilim/core-saas':
+        specifier: latest
+        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
       '@dnd-kit/core':
         specifier: ^6.1.0
         version: 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -864,9 +867,6 @@ packages:
 
   '@ayasofyazilim/core-saas@0.0.4':
     resolution: {integrity: sha512-x6gJsYW9BKWt5XV32kkXhGEAyUfphhA/ZZhZY/HIilvEh14eOtdOST7NHM6ds1GxZ2bwM9WO5jQDCEo4LfVskA==}
-
-  '@ayasofyazilim/saas@0.0.132':
-    resolution: {integrity: sha512-Diunf2VfJCJQzvLzP1XXKBiuZcP6enI9YYKrrEZOe6c2k9qcFu9oXUOsmQXMwi4wI8QLrToIW6oD5C9/FUN76A==}
 
   '@ayasofyazilim/sdk_generator@0.0.13':
     resolution: {integrity: sha512-Iof0t+ZKdIEJS2ddm2HBqSMncalBNyKsYYlMq1tkH8vQHgtG7kZMPy2YTRHP6WlH/CKcHC3R5ulOf8xmC2H3UA==}
@@ -10417,15 +10417,6 @@ snapshots:
       preact-render-to-string: 5.2.3(preact@10.11.3)
 
   '@ayasofyazilim/core-saas@0.0.4(magicast@0.3.5)(openapi-types@12.1.3)':
-    dependencies:
-      '@ayasofyazilim/sdk_generator': 0.0.13(magicast@0.3.5)(openapi-types@12.1.3)
-      commander: 13.0.0
-      create-release-it: 2.1.0
-    transitivePeerDependencies:
-      - magicast
-      - openapi-types
-
-  '@ayasofyazilim/saas@0.0.132(magicast@0.3.5)(openapi-types@12.1.3)':
     dependencies:
       '@ayasofyazilim/sdk_generator': 0.0.13(magicast@0.3.5)(openapi-types@12.1.3)
       commander: 13.0.0
