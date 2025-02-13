@@ -17,12 +17,11 @@ import AutoForm, {
 import {Trash2} from "lucide-react";
 import {useRouter} from "next/navigation";
 import {useState} from "react";
-import {useGrantedPolicies} from "@repo/utils/policies";
+import {useGrantedPolicies, isActionGranted} from "@repo/utils/policies";
 import {handleDeleteResponse, handlePutResponse} from "@repo/utils/api";
 import {deleteTenantByIdApi} from "src/actions/core/SaasService/delete-actions";
 import {putTenantApi} from "src/actions/core/SaasService/put-actions";
 import type {SaasServiceResource} from "src/language-data/core/SaasService";
-import isActionGranted from "src/utils/page-policy/action-policy";
 
 const tenantEditSchema = createZodObject($Volo_Saas_Host_Dtos_SaasTenantUpdateDto, [
   "name",

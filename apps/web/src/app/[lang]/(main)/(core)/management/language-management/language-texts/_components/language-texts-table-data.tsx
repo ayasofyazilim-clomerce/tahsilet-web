@@ -14,9 +14,9 @@ import {ArchiveRestore, Edit} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 import {handlePutResponse} from "@repo/utils/api";
 import type {Policy} from "@repo/utils/policies";
+import {isActionGranted} from "@repo/utils/policies";
 import {putLanguageTextsByResourceNameByCultureNameByNameRestoreApi} from "src/actions/core/AdministrationService/put-actions";
 import type {AdministrationServiceResource} from "src/language-data/core/AdministrationService";
-import isActionGranted from "src/utils/page-policy/action-policy";
 import LanguageTextsEdit from "./language-text-edit";
 
 type LanguageTextsTable = TanstackTableCreationProps<Volo_Abp_LanguageManagement_Dto_LanguageTextDto>;

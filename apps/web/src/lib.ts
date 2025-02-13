@@ -1,3 +1,4 @@
+"use server";
 import {IdentityServiceClient} from "@ayasofyazilim/core-saas/IdentityService";
 import {AccountServiceClient} from "@ayasofyazilim/core-saas/AccountService";
 import {SaasServiceClient} from "@ayasofyazilim/core-saas/SaasService";

@@ -11,9 +11,9 @@ import {CheckCircle, Languages, Plus, XCircle} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 import {handlePutResponse} from "@repo/utils/api";
 import type {Policy} from "@repo/utils/policies";
+import {isActionGranted} from "@repo/utils/policies";
 import {putLanguagesByIdSetAsDefaultApi} from "src/actions/core/AdministrationService/put-actions";
 import type {AdministrationServiceResource} from "src/language-data/core/AdministrationService";
-import isActionGranted from "src/utils/page-policy/action-policy";
 
 type LanguagesTable = TanstackTableCreationProps<Volo_Abp_LanguageManagement_Dto_LanguageDto>;
 

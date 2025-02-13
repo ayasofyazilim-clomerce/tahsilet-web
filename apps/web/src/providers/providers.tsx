@@ -5,7 +5,7 @@ import {SessionProvider} from "@repo/utils/auth";
 import type {Policy} from "@repo/utils/policies";
 import {GrantedPoliciesProvider} from "@repo/utils/policies";
 import type {Session} from "next-auth";
-import {getGrantedPoliciesApi} from "src/actions/core/AccountService/actions";
+import {getGrantedPoliciesApi} from "@repo/utils/api";
 import {getLocalizationResources} from "src/utils";
 import {LocaleProvider} from "./locale";
 import Tooltip from "./tooltip";

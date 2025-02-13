@@ -10,8 +10,8 @@ import {tanstackTableCreateColumnsByRowData} from "@repo/ayasofyazilim-ui/molecu
 import {Plus, ShieldCheck, ToyBrick} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type {Policy} from "@repo/utils/policies";
+import {isActionGranted} from "@repo/utils/policies";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
-import isActionGranted from "src/utils/page-policy/action-policy";
 
 type ApplicationsTable = TanstackTableCreationProps<Volo_Abp_OpenIddict_Applications_Dtos_ApplicationDto>;
 
