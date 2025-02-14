@@ -8,12 +8,12 @@ import type {
   Volo_Abp_PermissionManagement_UpdatePermissionDto as UpdatePermissionDto,
   Volo_Abp_PermissionManagement_GetPermissionListResultDto,
   Volo_Abp_PermissionManagement_PermissionGrantInfoDto,
-} from "@ayasofyazilim/core-saas/AdministrationService";
+} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {SectionLayout, SectionLayoutContent} from "@repo/ayasofyazilim-ui/templates/section-layout-v2";
+import {handlePutResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useCallback, useState, useTransition} from "react";
-import {handlePutResponse} from "@repo/utils/api";
-import {putPermissionsApi} from "src/actions/core/AdministrationService/put-actions";
+import {putPermissionsApi} from "src/actions/core/TahsiletService/put-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function RolePermissions({

@@ -1,18 +1,18 @@
 "use client";
 
-import type {Volo_Abp_Identity_IdentityRoleDto} from "@ayasofyazilim/core-saas/IdentityService";
-import {$Volo_Abp_Identity_IdentityRoleUpdateDto} from "@ayasofyazilim/core-saas/IdentityService";
+import type {Volo_Abp_Identity_IdentityRoleDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {$Volo_Abp_Identity_IdentityRoleUpdateDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {ActionList} from "@repo/ayasofyazilim-ui/molecules/action-button";
 import ConfirmDialog from "@repo/ayasofyazilim-ui/molecules/confirm-dialog";
 import {SchemaForm} from "@repo/ayasofyazilim-ui/organisms/schema-form";
 import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schema-form/utils";
-import {useGrantedPolicies, isActionGranted} from "@repo/utils/policies";
+import {handleDeleteResponse, handlePutResponse} from "@repo/utils/api";
+import {isActionGranted, useGrantedPolicies} from "@repo/utils/policies";
 import {Trash2} from "lucide-react";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {handleDeleteResponse, handlePutResponse} from "@repo/utils/api";
-import {deleteRoleByIdApi} from "src/actions/core/IdentityService/delete-actions";
-import {putRoleApi} from "src/actions/core/IdentityService/put-actions";
+import {deleteRoleByIdApi} from "src/actions/core/TahsiletService/delete-actions";
+import {putRoleApi} from "src/actions/core/TahsiletService/put-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function Form({

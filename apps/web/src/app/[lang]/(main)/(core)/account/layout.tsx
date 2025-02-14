@@ -25,18 +25,6 @@ export default async function Layout({
           label: languageData["Change.Password"],
           href: `${baseLink}change-password`,
         },
-        {
-          label: languageData["Profile.Picture"],
-          href: `${baseLink}profile-picture`,
-        },
-        {
-          label: languageData.Sessions,
-          href: `${baseLink}sessions`,
-        },
-        {
-          label: languageData.SecurityLogs,
-          href: `${baseLink}security-logs`,
-        },
       ]}>
       {children}
     </TabLayout>

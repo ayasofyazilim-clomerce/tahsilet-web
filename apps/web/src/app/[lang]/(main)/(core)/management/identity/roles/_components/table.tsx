@@ -1,9 +1,9 @@
 "use client";
 
-import type {PagedResultDto_IdentityRoleDto} from "@ayasofyazilim/core-saas/IdentityService";
+import type {PagedResultDto_IdentityRoleDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import TanstackTable from "@repo/ayasofyazilim-ui/molecules/tanstack-table";
-import {useParams, useRouter} from "next/navigation";
 import {useGrantedPolicies} from "@repo/utils/policies";
+import {useParams, useRouter} from "next/navigation";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 import {tableData} from "./roles-table-data";
 

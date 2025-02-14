@@ -2,9 +2,9 @@
 
 import {isUnauthorized} from "@repo/utils/policies";
 import {isErrorOnRequest} from "@repo/utils/api";
-import {getAllRolesApi, getUsersAvailableOrganizationUnitsApi} from "src/actions/core/IdentityService/actions";
 import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
 import {getResourceData} from "src/language-data/core/IdentityService";
+import {getAllRolesApi} from "src/actions/core/TahsiletService/actions";
 import Form from "./_components/form";
 
 export default async function Page({params}: {params: {lang: string}}) {
@@ -20,18 +20,9 @@ export default async function Page({params}: {params: {lang: string}}) {
     return <ErrorComponent languageData={languageData} message={rolesResponse.message} />;
   }
 
-  const organizationResponse = await getUsersAvailableOrganizationUnitsApi();
-  if (isErrorOnRequest(organizationResponse, lang, false)) {
-    return <ErrorComponent languageData={languageData} message={organizationResponse.message} />;
-  }
-
   return (
     <>
-      <Form
-        languageData={languageData}
-        organizationList={organizationResponse.data.items || []}
-        roleList={rolesResponse.data.items || []}
-      />
+      <Form languageData={languageData} roleList={rolesResponse.data.items || []} />
       <div className="hidden" id="page-description">
         {languageData["User.Create.Description"]}
       </div>

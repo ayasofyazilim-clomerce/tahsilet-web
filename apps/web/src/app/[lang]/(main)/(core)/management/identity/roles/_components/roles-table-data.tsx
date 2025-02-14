@@ -1,5 +1,5 @@
-import type {Volo_Abp_Identity_IdentityRoleDto} from "@ayasofyazilim/core-saas/IdentityService";
-import {$Volo_Abp_Identity_IdentityRoleDto} from "@ayasofyazilim/core-saas/IdentityService";
+import type {Volo_Abp_Identity_IdentityRoleDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {$Volo_Abp_Identity_IdentityRoleDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import type {
   TanstackTableColumnLink,
   TanstackTableCreationProps,
@@ -7,10 +7,10 @@ import type {
   TanstackTableTableActionsType,
 } from "@repo/ayasofyazilim-ui/molecules/tanstack-table/types";
 import {tanstackTableCreateColumnsByRowData} from "@repo/ayasofyazilim-ui/molecules/tanstack-table/utils";
-import {FolderCheck, Layers, Plus, ShieldCheck, User2Icon} from "lucide-react";
-import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type {Policy} from "@repo/utils/policies";
 import {isActionGranted} from "@repo/utils/policies";
+import {Plus, ShieldCheck} from "lucide-react";
+import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 type RolesTable = TanstackTableCreationProps<Volo_Abp_Identity_IdentityRoleDto>;
@@ -54,40 +54,6 @@ function rolesRowActions(
       icon: ShieldCheck,
       onClick: (row) => {
         router.push(`roles/${row.id}/permissions`);
-      },
-    });
-  }
-  if (isActionGranted(["AbpIdentity.Roles.Update"], grantedPolicies)) {
-    actions.push({
-      type: "simple",
-      actionLocation: "row",
-      cta: languageData["Role.MoveAllUsers"],
-      condition: (row) => row.userCount !== 0,
-      icon: User2Icon,
-      onClick: (row) => {
-        router.push(`roles/${row.id}/move-all-users`);
-      },
-    });
-  }
-  if (isActionGranted(["AbpIdentity.Roles.Update"], grantedPolicies)) {
-    actions.push({
-      type: "simple",
-      actionLocation: "row",
-      cta: languageData["Role.Claims"],
-      icon: FolderCheck,
-      onClick: (row) => {
-        router.push(`roles/${row.id}/claims`);
-      },
-    });
-  }
-  if (isActionGranted(["IdentityService.AssignableRoles"], grantedPolicies)) {
-    actions.push({
-      type: "simple",
-      actionLocation: "row",
-      cta: languageData["Role.Assignable"],
-      icon: Layers,
-      onClick: (row) => {
-        router.push(`roles/${row.id}/assignable-roles`);
       },
     });
   }
@@ -142,7 +108,7 @@ function rolesTable(
     pinColumns: ["name"],
     columnVisibility: {
       type: "show",
-      columns: ["name", "userCount"],
+      columns: ["name"],
     },
     filters: {
       textFilters: ["filter"],

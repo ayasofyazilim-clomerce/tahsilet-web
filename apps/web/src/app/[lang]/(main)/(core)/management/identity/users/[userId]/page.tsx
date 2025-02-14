@@ -1,14 +1,12 @@
 "use server";
 
-import {isUnauthorized} from "@repo/utils/policies";
 import {isErrorOnRequest} from "@repo/utils/api";
+import {isUnauthorized} from "@repo/utils/policies";
 import {
   getAllRolesApi,
   getUserDetailsByIdApi,
-  getUsersAvailableOrganizationUnitsApi,
-  getUsersByIdOrganizationUnitsApi,
-  getUsersByIdRolesApi,
-} from "src/actions/core/IdentityService/actions";
+  getUsersAssignableRolesApi,
+} from "src/actions/core/TahsiletService/actions";
 import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import Form from "./_components/form";
@@ -31,29 +29,17 @@ export default async function Page({params}: {params: {lang: string; userId: str
     return <ErrorComponent languageData={languageData} message={rolesResponse.message} />;
   }
 
-  const organizationResponse = await getUsersAvailableOrganizationUnitsApi();
-  if (isErrorOnRequest(organizationResponse, lang, false)) {
-    return <ErrorComponent languageData={languageData} message={organizationResponse.message} />;
-  }
-
-  const userRolesResponse = await getUsersByIdRolesApi(userId);
+  const userRolesResponse = await getUsersAssignableRolesApi(userId);
   if (isErrorOnRequest(userRolesResponse, lang, false)) {
     return <ErrorComponent languageData={languageData} message={userRolesResponse.message} />;
-  }
-
-  const userOrganizationResponse = await getUsersByIdOrganizationUnitsApi(userId);
-  if (isErrorOnRequest(userOrganizationResponse, lang, false)) {
-    return <ErrorComponent languageData={languageData} message={userOrganizationResponse.message} />;
   }
 
   return (
     <>
       <Form
         languageData={languageData}
-        organizationList={organizationResponse.data.items || []}
         roleList={rolesResponse.data.items || []}
         userDetailsData={userDetailsResponse.data}
-        userOrganizationUnits={userOrganizationResponse.data}
         userRoles={userRolesResponse.data.items || []}
       />
       <div className="hidden" id="page-title">

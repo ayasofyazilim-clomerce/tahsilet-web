@@ -7,7 +7,7 @@ export default function Layout({children, params}: {children: JSX.Element; param
   const {changeLocale} = useLocale();
   return (
     <TwoColumnLayout
-      LeftNode={<div className="flex flex-auto items-center justify-center bg-slate-100 text-4xl">Core Project</div>}
+      LeftNode={<div className="flex flex-auto items-center justify-center bg-slate-100 text-6xl">Tahsilet</div>}
       RightNode={
         <div className="flex flex-auto">
           <div className="absolute right-4 top-4 md:right-10 md:top-8">

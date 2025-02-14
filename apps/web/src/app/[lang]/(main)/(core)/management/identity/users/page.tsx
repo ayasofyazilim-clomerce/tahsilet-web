@@ -1,13 +1,9 @@
 "use server";
 
-import type {GetApiIdentityUsersData} from "@ayasofyazilim/core-saas/IdentityService";
-import {isUnauthorized} from "@repo/utils/policies";
+import type {GetApiIdentityUsersData} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {isErrorOnRequest} from "@repo/utils/api";
-import {
-  getUsersApi,
-  getUsersLookupOrganizationUnitsApi,
-  getUsersLookupRolesApi,
-} from "src/actions/core/IdentityService/actions";
+import {isUnauthorized} from "@repo/utils/policies";
+import {getUsersApi} from "src/actions/core/TahsiletService/actions";
 import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import UsersTable from "./_components/table";
@@ -31,21 +27,5 @@ export default async function Page({
     return <ErrorComponent languageData={languageData} message={usersResponse.message} />;
   }
 
-  const rolesResponse = await getUsersLookupRolesApi();
-  if (isErrorOnRequest(rolesResponse, lang, false)) {
-    return <ErrorComponent languageData={languageData} message={rolesResponse.message} />;
-  }
-  const organizationResponse = await getUsersLookupOrganizationUnitsApi();
-  if (isErrorOnRequest(organizationResponse, lang, false)) {
-    return <ErrorComponent languageData={languageData} message={organizationResponse.message} />;
-  }
-
-  return (
-    <UsersTable
-      languageData={languageData}
-      organizationList={organizationResponse.data}
-      response={usersResponse.data}
-      roleList={rolesResponse.data}
-    />
-  );
+  return <UsersTable languageData={languageData} response={usersResponse.data} />;
 }

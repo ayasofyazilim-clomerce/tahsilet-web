@@ -33,8 +33,7 @@
     "href": null,
     "icon": "management",
     "parentNavbarItemKey": "management",
-    "displayOrder": 1,
-    "requiredPolicies": ["UniRefund.Settings"]
+    "displayOrder": 1
   },
   {
     "key": "management/identity/roles",
@@ -77,46 +76,6 @@
     "requiredPolicies": ["AbpIdentity.Users.Create"]
   },
   {
-    "key": "management/identity/claim-types",
-    "displayName": "ClaimType",
-    "description": "Manage claim types for user identities.",
-    "href": "management/identity/claim-types",
-    "icon": "scan",
-    "parentNavbarItemKey": "management/identity",
-    "displayOrder": 1,
-    "requiredPolicies": ["AbpIdentity.ClaimTypes"]
-  },
-  {
-    "key": "management/identity/claim-type/new",
-    "displayName": "New",
-    "description": "Add new claim type.",
-    "href": "management/identity/claim-type/new",
-    "icon": "new",
-    "parentNavbarItemKey": "management/identity/claim-type",
-    "displayOrder": 1,
-    "requiredPolicies": ["AbpIdentity.ClaimTypes.Create"]
-  },
-  {
-    "key": "management/identity/security-logs",
-    "displayName": "SecurityLogs",
-    "description": "View security logs and audit trails.",
-    "href": "management/identity/security-logs",
-    "icon": "lock",
-    "parentNavbarItemKey": "management/identity",
-    "displayOrder": 1,
-    "requiredPolicies": ["AbpIdentity.SecurityLogs"]
-  },
-  {
-    "key": "management/identity/organization",
-    "displayName": "Organization",
-    "description": "Manage organizational settings and structure.",
-    "href": "management/identity/organization",
-    "icon": "building",
-    "parentNavbarItemKey": "management/identity",
-    "displayOrder": 1,
-    "requiredPolicies": ["AbpIdentity.OrganizationUnits"]
-  },
-  {
     "key": "management/saas",
     "displayName": "Saas",
     "description": "Manage SaaS configurations and settings.",
@@ -124,27 +83,7 @@
     "icon": "management",
     "parentNavbarItemKey": "management",
     "displayOrder": 1,
-    "requiredPolicies": ["Saas.Editions", "Saas.Tenants"]
-  },
-  {
-    "key": "management/saas/editions",
-    "displayName": "Edition",
-    "description": "Manage SaaS editions and plans.",
-    "href": "management/saas/editions",
-    "icon": "edition",
-    "parentNavbarItemKey": "management/saas",
-    "displayOrder": 1,
-    "requiredPolicies": ["Saas.Editions"]
-  },
-  {
-    "key": "management/saas/editions/new",
-    "displayName": "New",
-    "description": "Add new edition.",
-    "href": "management/saas/editions/new",
-    "icon": "new",
-    "parentNavbarItemKey": "management/saas/editions",
-    "displayOrder": 1,
-    "requiredPolicies": ["Saas.Editions.Create"]
+    "requiredPolicies": ["AbpTenantManagement.Tenants"]
   },
   {
     "key": "management/saas/tenants",
@@ -154,7 +93,7 @@
     "icon": "globe",
     "parentNavbarItemKey": "management/saas",
     "displayOrder": 1,
-    "requiredPolicies": ["Saas.Tenants"]
+    "requiredPolicies": ["AbpTenantManagement.Tenants"]
   },
   {
     "key": "management/saas/tenants/new",
@@ -164,135 +103,6 @@
     "icon": "new",
     "parentNavbarItemKey": "management/saas/tenants",
     "displayOrder": 1,
-    "requiredPolicies": ["Saas.Tenants.Create"]
-  },
-  {
-    "key": "management/openiddict",
-    "displayName": "OpenIdDict",
-    "description": "Manage Open ID dict settings.",
-    "href": null,
-    "icon": "id",
-    "parentNavbarItemKey": "management",
-    "displayOrder": 1,
-    "requiredPolicies": ["OpenIddictPro.Application", "OpenIddictPro.Scope"]
-  },
-  {
-    "key": "management/openiddict/applications",
-    "displayName": "Applications",
-    "description": "Manage applications within Open Id Dict.",
-    "href": "management/openiddict/applications",
-    "icon": "app",
-    "parentNavbarItemKey": "management/openiddict",
-    "displayOrder": 1,
-    "requiredPolicies": ["OpenIddictPro.Application"]
-  },
-  {
-    "key": "management/openiddict/applications/new",
-    "displayName": "New",
-    "description": "Add new application.",
-    "href": "management/openiddict/applications/new",
-    "icon": "new",
-    "parentNavbarItemKey": "management/openiddict/applications",
-    "displayOrder": 1,
-    "requiredPolicies": ["OpenIddictPro.Application.Create"]
-  },
-  {
-    "key": "management/openiddict/scopes",
-    "displayName": "Scopes",
-    "description": "View and manage scopes for Open Id Dict.",
-    "href": "management/openiddict/scopes",
-    "icon": "scope",
-    "parentNavbarItemKey": "management/openiddict",
-    "displayOrder": 1,
-    "requiredPolicies": ["OpenIddictPro.Scope"]
-  },
-  {
-    "key": "management/openiddict/scopes/new",
-    "displayName": "New",
-    "description": "Add new application.",
-    "href": "management/openiddict/scopes/new",
-    "icon": "new",
-    "parentNavbarItemKey": "management/openiddict/scopes",
-    "displayOrder": 1,
-    "requiredPolicies": ["OpenIddictPro.Scope.Create"]
-  },
-  {
-    "key": "management/language-management",
-    "displayName": "LanguageManagement",
-    "description": "Access language management tools and settings.",
-    "href": null,
-    "icon": "management",
-    "parentNavbarItemKey": "management",
-    "displayOrder": 1,
-    "requiredPolicies": ["UniRefund.Settings"]
-  },
-  {
-    "key": "management/language-management/languages",
-    "displayName": "Languages",
-    "description": "Manage language settings and translations.",
-    "href": "management/language-management/languages",
-    "icon": "language",
-    "parentNavbarItemKey": "management/language-management",
-    "displayOrder": 1,
-    "requiredPolicies": ["LanguageManagement.Languages"]
-  },
-  {
-    "key": "management/language-management/languages/new",
-    "displayName": "New",
-    "description": "Add new language.",
-    "href": "management/language-management/languages/new",
-    "icon": "new",
-    "parentNavbarItemKey": "management/language-management/languages",
-    "displayOrder": 1,
-    "requiredPolicies": ["LanguageManagement.Languages.Create"]
-  },
-  {
-    "key": "management/language-management/language-texts",
-    "displayName": "LanguageTexts",
-    "description": "Edit and review language texts.",
-    "href": "management/language-management/language-texts",
-    "icon": "book",
-    "parentNavbarItemKey": "management/language-management",
-    "displayOrder": 1,
-    "requiredPolicies": ["LanguageManagement.LanguageTexts"]
-  },
-  {
-    "key": "management/text-templates",
-    "displayName": "TextTemplates",
-    "description": "Manage and create text templates.",
-    "href": "management/text-templates",
-    "icon": "text",
-    "parentNavbarItemKey": "management",
-    "displayOrder": 1,
-    "requiredPolicies": ["TextTemplateManagement.TextTemplates"]
-  },
-  {
-    "key": "management/audit-logs",
-    "displayName": "AuditLogs",
-    "description": "View and analyze audit logs.",
-    "href": "management/audit-logs/audit-logs",
-    "icon": "log",
-    "parentNavbarItemKey": "management",
-    "displayOrder": 1,
-    "requiredPolicies": ["AuditLogging.AuditLogs"]
-  },
-  {
-    "key": "settings",
-    "displayName": "Settings",
-    "description": "Access settings settings and tools.",
-    "href": null,
-    "icon": "settings",
-    "parentNavbarItemKey": "/",
-    "displayOrder": 1
-  },
-  {
-    "key": "settings/tenant",
-    "displayName": "Tenant",
-    "description": "Manage settings for tenants.",
-    "href": "settings/tenant",
-    "icon": "settings",
-    "parentNavbarItemKey": "settings",
-    "displayOrder": 1,
-    "requiredPolicies": ["UniRefund.Dashboard.Tenant"]
+    "requiredPolicies": ["AbpTenantManagement.Tenants.Create"]
   }
 ]

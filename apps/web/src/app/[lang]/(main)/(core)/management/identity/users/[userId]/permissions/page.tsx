@@ -1,9 +1,8 @@
 "use server";
 
-import {isUnauthorized} from "@repo/utils/policies";
 import {isErrorOnRequest} from "@repo/utils/api";
-import {getPermissionsApi} from "src/actions/core/AdministrationService/actions";
-import {getUserDetailsByIdApi} from "src/actions/core/IdentityService/actions";
+import {isUnauthorized} from "@repo/utils/policies";
+import {getPermissionsApi, getUserDetailsByIdApi} from "src/actions/core/TahsiletService/actions";
 import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import UserPermissions from "./_components/permissions";
