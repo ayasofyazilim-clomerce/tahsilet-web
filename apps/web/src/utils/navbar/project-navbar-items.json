@@ -104,5 +104,25 @@
     "parentNavbarItemKey": "management/saas/tenants",
     "displayOrder": 1,
     "requiredPolicies": ["AbpTenantManagement.Tenants.Create"]
+  },
+  {
+    "key": "members",
+    "displayName": "Members",
+    "description": "Access and manage members settings.",
+    "href": "members",
+    "icon": "user",
+    "parentNavbarItemKey": "/",
+    "displayOrder": 1,
+    "requiredPolicies": ["TahsilEt.Members"]
+  },
+  {
+    "key": "members/new",
+    "displayName": "New",
+    "description": "Add new member",
+    "href": "members/new",
+    "icon": "new",
+    "parentNavbarItemKey": "members",
+    "displayOrder": 1,
+    "requiredPolicies": ["TahsilEt.Members.Save"]
   }
 ]
