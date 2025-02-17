@@ -22,7 +22,7 @@ export default async function Page({
     <>
       <PageClientSide languageData={languageData} />
       <div className="hidden" id="page-description">
-        {languageData["Member.new.description"]}
+        {languageData["Member.New.Description"]}
       </div>
     </>
   );

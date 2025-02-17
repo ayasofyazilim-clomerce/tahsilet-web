@@ -249,10 +249,13 @@
 
   "Member": "Member",
   "Members": "Members",
+  "Transaction.New": "New Transaction",
+  "Payment.New": "New Payment",
   "Member.New": "Add new member",
+  "Transaction.Close": "Close transaction",
   "Member.edit": "Edit member",
-  "Member.new.description": "You can create a new member from here.",
-  "Member.edit.description": "You can update the member's details from here.",
+  "Member.New.Description": "You can create a new member from here.",
+  "Member.Edit.Description": "You can update the member's details from here.",
   "Transaction.Create.Description": "You can create a new transaction from here.",
-  "Member.Edit.Description": "You can update the member's details from here."
+  "Transaction.Close.Description": " Are you sure you want to close this transaction."
 }

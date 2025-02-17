@@ -41,7 +41,7 @@ function transactionsTableActions(
     actions.push({
       type: "simple",
       actionLocation: "table",
-      cta: "New Transaction",
+      cta: languageData["Transaction.New"],
       icon: PlusCircle,
       onClick() {
         router.push(`/members/${memberId}/transactions/new`);
@@ -61,8 +61,8 @@ function transactionsRowActions(
     actions.push({
       type: "custom-dialog",
       actionLocation: "row",
-      cta: "Add Payment",
-      title: "Add Payment",
+      cta: languageData["Payment.New"],
+      title: languageData["Payment.New"],
       icon: Plus,
       content: (row) => (
         <SchemaForm<TahsilEt_Transactions_ExecutePaymentDto>
@@ -97,12 +97,12 @@ function transactionsRowActions(
   if (isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies)) {
     actions.push({
       type: "confirmation-dialog",
-      cta: "Close Transaction",
-      title: "Close Transaction",
+      cta: languageData["Transaction.Close"],
+      title: languageData["Transaction.Close"],
       actionLocation: "row",
       confirmationText: languageData.Save,
       cancelText: languageData.Cancel,
-      description: "are you sure to close this transaction?",
+      description: languageData["Transaction.Close.Description"],
       icon: LucidePanelTopClose,
       onConfirm: (row) => {
         void postTransactionClosePaymentsFifoApi({
@@ -141,7 +141,7 @@ function transactionsColumns(
 ) {
   if (isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies)) {
     links.transactionType = {
-      prefix: `/member/${memberId}/transactions/`,
+      prefix: `/members/${memberId}/transactions/`,
       targetAccessorKey: "id",
     };
   }
