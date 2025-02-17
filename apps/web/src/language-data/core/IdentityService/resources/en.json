@@ -245,5 +245,12 @@
   "Grant.All.Permissions": "Grant All Permissions",
   "Permissions.Get.Fail": "An error occurred while getting permissions.",
   "Permissions.Update.Success": "Permissions saved successfully.",
-  "Permissions.Update.Fail": "An error occurred while saving permissions."
+  "Permissions.Update.Fail": "An error occurred while saving permissions.",
+
+  "Member": "Member",
+  "Members": "Members",
+  "Member.New": "Add new member",
+  "Member.edit": "Edit member",
+  "Member.new.description": "You can create a new member from here.",
+  "Member.edit.description": "You can update the member's details from here."
 }

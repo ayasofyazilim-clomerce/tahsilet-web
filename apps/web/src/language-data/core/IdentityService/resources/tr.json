@@ -248,5 +248,12 @@
   "Grant.All.Permissions": "Tüm İzinleri Ver",
   "Permissions.Get.Fail": "İzinler alınırken bir hata oluştu.",
   "Permissions.Update.Success": "İzinler başarıyla kaydedildi.",
-  "Permissions.Update.Fail": "İzinler kaydedilirken bir hata oluştu."
+  "Permissions.Update.Fail": "İzinler kaydedilirken bir hata oluştu.",
+
+  "Member": "Üye",
+  "Members": "Üyeler",
+  "Member.New": "Yeni Üye",
+  "Member.edit": "Üyeyi Düzenle",
+  "Member.new.description": "Buradan yeni bir Üye oluşturabilirsiniz.",
+  "Member.edit.description": "Buradan Üye bilgilerini değiştirebilirsiniz."
 }
