@@ -255,5 +255,7 @@
   "Member.New": "Yeni Üye",
   "Member.edit": "Üyeyi Düzenle",
   "Member.new.description": "Buradan yeni bir Üye oluşturabilirsiniz.",
-  "Member.edit.description": "Buradan Üye bilgilerini değiştirebilirsiniz."
+  "Member.edit.description": "Buradan Üye bilgilerini değiştirebilirsiniz.",
+  "Transaction.Create.Description": "Buradan yeni bir işlem oluşturabilirsiniz.",
+  "Member.Edit.Description": "Buradan Üye bilgilerini değiştirebilirsiniz."
 }

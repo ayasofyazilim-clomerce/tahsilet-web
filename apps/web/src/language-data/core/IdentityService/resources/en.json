@@ -252,5 +252,7 @@
   "Member.New": "Add new member",
   "Member.edit": "Edit member",
   "Member.new.description": "You can create a new member from here.",
-  "Member.edit.description": "You can update the member's details from here."
+  "Member.edit.description": "You can update the member's details from here.",
+  "Transaction.Create.Description": "You can create a new transaction from here.",
+  "Member.Edit.Description": "You can update the member's details from here."
 }

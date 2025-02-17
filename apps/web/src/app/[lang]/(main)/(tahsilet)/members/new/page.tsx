@@ -21,7 +21,6 @@ export default async function Page({
   return (
     <>
       <PageClientSide languageData={languageData} />
-
       <div className="hidden" id="page-description">
         {languageData["Member.new.description"]}
       </div>
