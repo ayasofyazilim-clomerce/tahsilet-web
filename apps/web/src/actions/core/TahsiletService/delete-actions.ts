@@ -1,5 +1,6 @@
 "use server";
 
+import type {DeleteApiMemberByIdData} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {structuredError, structuredResponse} from "@repo/utils/api";
 import {getTahsiletServiceClient} from "src/lib";
 
@@ -39,12 +40,10 @@ export async function deleteTenantsByIdApi(id: string) {
   }
 }
 
-export async function deleteMemberByIdApi(id: string) {
+export async function deleteMemberByIdApi(data: DeleteApiMemberByIdData) {
   try {
     const client = await getTahsiletServiceClient();
-    const dataResponse = await client.member.deleteApiMemberById({
-      id,
-    });
+    const dataResponse = await client.member.deleteApiMemberById(data);
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);

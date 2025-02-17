@@ -55,7 +55,13 @@ function membersRowActions(
       description: languageData["Delete.Assurance"],
       icon: Trash2,
       onConfirm: (row) => {
-        void deleteMemberByIdApi(row.id || "").then((res) => {
+        void deleteMemberByIdApi({
+          id: row.id || "",
+          requestBody: {
+            idType: row.idType,
+            identifier: row.identifier,
+          },
+        }).then((res) => {
           handlePutResponse(res, router);
         });
       },
