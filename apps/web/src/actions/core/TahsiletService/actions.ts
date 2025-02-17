@@ -2,8 +2,10 @@
 import type {
   GetApiIdentityRolesData,
   GetApiIdentityUsersData,
+  GetApiMemberData,
   GetApiMultiTenancyTenantsData,
   GetApiPermissionManagementPermissionsData,
+  GetApiTransactionData,
 } from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {structuredError, structuredResponse} from "@repo/utils/api";
 import {getTahsiletServiceClient} from "src/lib";
@@ -102,6 +104,25 @@ export async function getPersonalInfomationApi() {
   try {
     const client = await getTahsiletServiceClient();
     const dataResponse = await client.profile.getApiAccountMyProfile();
+    return structuredResponse(dataResponse);
+  } catch (error) {
+    return structuredError(error);
+  }
+}
+
+export async function getMemberApi(data: GetApiMemberData) {
+  try {
+    const client = await getTahsiletServiceClient();
+    const dataResponse = await client.member.getApiMember(data);
+    return structuredResponse(dataResponse);
+  } catch (error) {
+    return structuredError(error);
+  }
+}
+export async function getTransactionApi(data: GetApiTransactionData) {
+  try {
+    const client = await getTahsiletServiceClient();
+    const dataResponse = await client.transaction.getApiTransaction(data);
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);

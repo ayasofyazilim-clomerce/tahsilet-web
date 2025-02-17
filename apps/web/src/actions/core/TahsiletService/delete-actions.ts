@@ -38,3 +38,27 @@ export async function deleteTenantsByIdApi(id: string) {
     return structuredError(error);
   }
 }
+
+export async function deleteMemberByIdApi(id: string) {
+  try {
+    const client = await getTahsiletServiceClient();
+    const dataResponse = await client.member.deleteApiMemberById({
+      id,
+    });
+    return structuredResponse(dataResponse);
+  } catch (error) {
+    return structuredError(error);
+  }
+}
+
+export async function deleteTransactionByIdApi(id: string) {
+  try {
+    const client = await getTahsiletServiceClient();
+    const dataResponse = await client.transaction.deleteApiTransactionById({
+      id,
+    });
+    return structuredResponse(dataResponse);
+  } catch (error) {
+    return structuredError(error);
+  }
+}
