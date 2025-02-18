@@ -1,11 +1,5 @@
-import type {
-  TahsilEt_Transactions_ExecutePaymentDto,
-  TahsilEt_Transactions_ListTransactionResponseDto,
-} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import {
-  $TahsilEt_Transactions_ExecutePaymentDto,
-  $TahsilEt_Transactions_ListTransactionResponseDto,
-} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import type {TahsilEt_Transactions_ListTransactionResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {$TahsilEt_Transactions_ListTransactionResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import type {
   TanstackTableColumnLink,
   TanstackTableCreationProps,
@@ -13,17 +7,11 @@ import type {
   TanstackTableTableActionsType,
 } from "@repo/ayasofyazilim-ui/molecules/tanstack-table/types";
 import {tanstackTableCreateColumnsByRowData} from "@repo/ayasofyazilim-ui/molecules/tanstack-table/utils";
-import {SchemaForm} from "@repo/ayasofyazilim-ui/organisms/schema-form";
-import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schema-form/utils";
-import {handleDeleteResponse, handlePostResponse} from "@repo/utils/api";
+import {handleDeleteResponse} from "@repo/utils/api";
 import type {Policy} from "@repo/utils/policies";
 import {isActionGranted} from "@repo/utils/policies";
-import {LucidePanelTopClose, Plus, PlusCircle, Trash2} from "lucide-react";
+import {PlusCircle, Trash2} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
-import {
-  postTransactionClosePaymentsFifoApi,
-  postTransactionExecutePaymentApi,
-} from "src/actions/core/TahsiletService/post-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 import {deleteTransactionByIdApi} from "../../../../../../../actions/core/TahsiletService/delete-actions";
 
@@ -57,62 +45,6 @@ function transactionsRowActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableRowActionsType<TahsilEt_Transactions_ListTransactionResponseDto>[] = [];
-  if (isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies)) {
-    actions.push({
-      type: "custom-dialog",
-      actionLocation: "row",
-      cta: languageData["Payment.New"],
-      title: languageData["Payment.New"],
-      icon: Plus,
-      content: (row) => (
-        <SchemaForm<TahsilEt_Transactions_ExecutePaymentDto>
-          className="flex flex-col gap-4"
-          filter={{
-            type: "include",
-            sort: true,
-            keys: ["amount"],
-          }}
-          onSubmit={({formData}) => {
-            if (!formData) return;
-            void postTransactionExecutePaymentApi({
-              requestBody: {
-                ...formData,
-                memberId: row.memberId || "",
-              },
-            }).then((res) => {
-              handlePostResponse(res, router);
-            });
-          }}
-          schema={$TahsilEt_Transactions_ExecutePaymentDto}
-          submitText={languageData.Save}
-          uiSchema={createUiSchemaWithResource({
-            schema: $TahsilEt_Transactions_ExecutePaymentDto,
-            resources: languageData,
-            name: "Form.Transaction",
-          })}
-        />
-      ),
-    });
-  }
-  if (isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies)) {
-    actions.push({
-      type: "confirmation-dialog",
-      cta: languageData["Transaction.Close"],
-      title: languageData["Transaction.Close"],
-      actionLocation: "row",
-      confirmationText: languageData.Save,
-      cancelText: languageData.Cancel,
-      description: languageData["Transaction.Close.Description"],
-      icon: LucidePanelTopClose,
-      onConfirm: (row) => {
-        void postTransactionClosePaymentsFifoApi({
-          requestBody: {memberId: row.memberId},
-        }).then((res) => {
-          handlePostResponse(res, router);
-        });
-      },
-    });
-  }
   if (isActionGranted(["TahsilEt.Transactions.Delete"], grantedPolicies)) {
     actions.push({
       type: "confirmation-dialog",
