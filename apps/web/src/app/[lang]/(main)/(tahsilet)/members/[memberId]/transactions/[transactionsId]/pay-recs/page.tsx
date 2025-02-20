@@ -26,7 +26,6 @@ export default async function Page({
   const transctionPayRecsResponse = await getTransactionListWithPayRecsApi({
     id: transactionsId,
     memberId,
-    sorting: "creationTime",
   });
   if (isErrorOnRequest(transctionPayRecsResponse, lang, false)) {
     return <ErrorComponent languageData={languageData} message={transctionPayRecsResponse.message} />;

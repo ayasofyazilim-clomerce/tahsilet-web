@@ -27,7 +27,8 @@ function transactionsColumns(locale: string, languageData: IdentityServiceResour
     badges: {
       logicalRef: {
         values: $TahsilEt_Transactions_Enums_TransactionType.enum.map((key) => ({
-          label: key === "Credit" ? "Payment" : "Transition update",
+          label: key === "Credit" ? "Payment update" : "Transaction update",
+          badgeClassName: key === "Credit" ? "bg-green-500" : "bg-blue-500",
           position: "before",
           conditions: [
             {
