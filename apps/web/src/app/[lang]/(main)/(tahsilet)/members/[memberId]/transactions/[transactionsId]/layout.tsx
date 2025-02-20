@@ -39,6 +39,9 @@ export default async function Layout({
       <div className="hidden" id="page-description">
         {languageData["Transaction.Edit.Description"]}
       </div>
+      <div className="hidden" id="page-back-link">
+        {getBaseLink(`members/${memberId}/transactions`, lang)}
+      </div>
     </>
   );
 }
