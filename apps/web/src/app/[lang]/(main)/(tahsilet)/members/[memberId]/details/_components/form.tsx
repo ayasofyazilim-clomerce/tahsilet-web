@@ -42,10 +42,7 @@ export default function Form({
       .min(2, "Soyisim en az 2 karakter olmalıdır.")
       .regex(/^[a-zA-ZığüşöçİĞÜŞÖÇ\s]+$/, "Soyisim yalnızca harf içermelidir."),
     mail: z.string().email("Geçerli bir e-posta adresi giriniz.").optional(),
-    tel: z
-      .string()
-      .regex(/^(?:[+]\d{1,2})(?:\d{10})$/, "Geçerli bir telefon numarası giriniz.")
-      .optional(),
+    tel: z.string().optional(),
   });
   const organizationFormSchema = z.object({
     idType: z.enum(["VKN"]),
@@ -57,10 +54,7 @@ export default function Form({
     paymentFreqDays: z.number().min(1).max(31),
     title: z.string(),
     mail: z.string().email("Geçerli bir e-posta adresi giriniz.").optional(),
-    tel: z
-      .string()
-      .regex(/^(?:[+]\d{1,2})(?:\d{10})$/, "Invalid telephone format")
-      .optional(),
+    tel: z.string().optional(),
   });
   return (
     <AutoForm

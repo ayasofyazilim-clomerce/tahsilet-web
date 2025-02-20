@@ -23,10 +23,7 @@ export default function MemberOrganizationForm({languageData}: {languageData: Id
     paymentFreqDays: z.number().min(1).max(31),
     title: z.string(),
     mail: z.string().email("Geçerli bir e-posta adresi giriniz.").optional(),
-    tel: z
-      .string()
-      .regex(/^(?:[+]\d{1,2})(?:\d{10})$/, "Invalid telephone format")
-      .optional(),
+    tel: z.string().optional(),
   });
 
   return (
