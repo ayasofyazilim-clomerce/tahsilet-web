@@ -46,9 +46,9 @@ export function transactionsTable(): TransactionsTable {
     fillerColumn: "logicalRef",
     columnVisibility: {
       type: "show",
-      columns: ["logicalRef", "paidAmount", "amount", "dueDate", "transactionDate"],
+      columns: ["logicalRef", "crossRef", "ficheRef", "paidAmount", "amount", "dueDate", "transactionDate"],
     },
-    columnOrder: ["logicalRef", "paidAmount", "amount", "transactionDate", "dueDate"],
+    columnOrder: ["logicalRef", "crossRef", "ficheRef", "paidAmount", "amount", "transactionDate", "dueDate"],
   };
   return table;
 }
