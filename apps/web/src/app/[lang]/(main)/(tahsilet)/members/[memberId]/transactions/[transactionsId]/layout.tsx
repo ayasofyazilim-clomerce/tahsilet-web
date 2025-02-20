@@ -11,32 +11,33 @@ export default async function Layout({
   children: React.ReactNode;
   params: {
     memberId: string;
+    transactionsId: string;
     lang: string;
   };
 }) {
-  const {memberId, lang} = params;
+  const {memberId, transactionsId, lang} = params;
   const {languageData} = await getResourceData(lang);
-  const baseLink = getBaseLink(`members/${memberId}/`, lang);
+  const baseLink = getBaseLink(`members/${memberId}/transactions/${transactionsId}/`, lang);
 
   return (
     <>
       <TabLayout
-        orientation="vertical"
+        orientation="horizontal"
         tabList={[
           {
-            label: "Member Info",
+            label: "Transaction Info",
             href: `${baseLink}details`,
           },
           {
-            label: "Transaction",
-            href: `${baseLink}transactions`,
+            label: "Pay Recs",
+            href: `${baseLink}pay-recs`,
           },
         ]}
         variant="simple">
         {children}
       </TabLayout>
       <div className="hidden" id="page-description">
-        {languageData["Member.Edit.Description"]}
+        {languageData["Transaction.Edit.Description"]}
       </div>
     </>
   );

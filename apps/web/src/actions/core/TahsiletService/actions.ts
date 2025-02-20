@@ -6,6 +6,7 @@ import type {
   GetApiMultiTenancyTenantsData,
   GetApiPermissionManagementPermissionsData,
   GetApiTransactionData,
+  GetApiTransactionListWithPayRecsData,
 } from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {structuredError, structuredResponse} from "@repo/utils/api";
 import {getTahsiletServiceClient} from "src/lib";
@@ -123,6 +124,16 @@ export async function getTransactionApi(data: GetApiTransactionData) {
   try {
     const client = await getTahsiletServiceClient();
     const dataResponse = await client.transaction.getApiTransaction(data);
+    return structuredResponse(dataResponse);
+  } catch (error) {
+    return structuredError(error);
+  }
+}
+
+export async function getTransactionListWithPayRecsApi(data: GetApiTransactionListWithPayRecsData) {
+  try {
+    const client = await getTahsiletServiceClient();
+    const dataResponse = await client.transaction.getApiTransactionListWithPayRecs(data);
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);

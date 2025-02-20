@@ -6,7 +6,7 @@ import {getTransactionApi} from "src/actions/core/TahsiletService/actions";
 import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import {getBaseLink} from "src/utils";
-import Form from "./form";
+import Form from "./_components/form";
 
 export default async function Page({
   params,
@@ -39,9 +39,6 @@ export default async function Page({
         transactionId={transactionsId}
       />
 
-      <div className="hidden" id="page-description">
-        {" Transactions edit "}
-      </div>
       <div className="hidden" id="page-back-link">
         {getBaseLink(`members/${memberId}/transactions`, lang)}
       </div>

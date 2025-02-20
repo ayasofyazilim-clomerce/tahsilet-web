@@ -43,8 +43,8 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
       '@ayasofyazilim/tahsilet-saas':
-        specifier: ^0.0.2
-        version: 0.0.2(magicast@0.3.5)(openapi-types@12.1.3)
+        specifier: ^0.0.3
+        version: 0.0.3(magicast@0.3.5)(openapi-types@12.1.3)
       '@formatjs/intl-localematcher':
         specifier: ^0.5.4
         version: 0.5.4
@@ -872,8 +872,8 @@ packages:
     resolution: {integrity: sha512-Iof0t+ZKdIEJS2ddm2HBqSMncalBNyKsYYlMq1tkH8vQHgtG7kZMPy2YTRHP6WlH/CKcHC3R5ulOf8xmC2H3UA==}
     hasBin: true
 
-  '@ayasofyazilim/tahsilet-saas@0.0.2':
-    resolution: {integrity: sha512-s8D2dowLNGwg0jEM0qes7QQ9SgL56NKSwU+d7Y6mMlpCFpmuAFpT9wTNx3GIdnbOoK1ndCWk9EIVSgLJLu3r1w==}
+  '@ayasofyazilim/tahsilet-saas@0.0.3':
+    resolution: {integrity: sha512-x8fjtppO1qX+PIEShLoCAcu3TFTBUO+xpiDY6uXd/pBX9B2hwCTA7J0Xj6OY/o78tiugDEl8ciBaZcyvstsY2Q==}
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -8948,8 +8948,8 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  readdirp@4.1.1:
-    resolution: {integrity: sha512-h80JrZu/MHUZCyHu5ciuoI0+WxsCxzxJTILn6Fs8rxSnFPh+UVHYfeIxK1nVGugMqkfC4vJcBOYbkfkwYK0+gw==}
+  readdirp@4.1.2:
+    resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
 
   recast@0.23.9:
@@ -10447,7 +10447,7 @@ snapshots:
       - magicast
       - openapi-types
 
-  '@ayasofyazilim/tahsilet-saas@0.0.2(magicast@0.3.5)(openapi-types@12.1.3)':
+  '@ayasofyazilim/tahsilet-saas@0.0.3(magicast@0.3.5)(openapi-types@12.1.3)':
     dependencies:
       '@ayasofyazilim/sdk_generator': 0.0.13(magicast@0.3.5)(openapi-types@12.1.3)
       commander: 13.1.0
@@ -16041,7 +16041,7 @@ snapshots:
 
   chokidar@4.0.3:
     dependencies:
-      readdirp: 4.1.1
+      readdirp: 4.1.2
 
   chownr@2.0.0: {}
 
@@ -19950,7 +19950,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.1.1: {}
+  readdirp@4.1.2: {}
 
   recast@0.23.9:
     dependencies:

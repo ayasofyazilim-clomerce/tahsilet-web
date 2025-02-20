@@ -257,5 +257,8 @@
   "Member.New.Description": "You can create a new member from here.",
   "Member.Edit.Description": "You can update the member's details from here.",
   "Transaction.Create.Description": "You can create a new transaction from here.",
-  "Transaction.Close.Description": " Are you sure you want to close this transaction."
+  "Transaction.Close.Description": " Are you sure you want to close this transaction.",
+  "Form.Transaction.PayRec.amount": "Remaining Payment Amount",
+  "Form.Transaction.PayRec.paidAmount": "Amount Paid",
+  "Transaction.Edit.Description": "You can update the transaction's details from here."
 }

@@ -12,22 +12,25 @@ export default async function Page({
 }: {
   params: {
     memberId: string;
+    transactionsId: string;
     lang: string;
   };
 }) {
-  const {lang, memberId} = params;
+  const {lang, memberId, transactionsId} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
     requiredPolicies: ["TahsilEt.Transactions"],
     lang,
   });
 
-  const transctionResponse = await getTransactionListWithPayRecsApi({
+  const transctionPayRecsResponse = await getTransactionListWithPayRecsApi({
+    id: transactionsId,
     memberId,
+    sorting: "creationTime",
   });
-  if (isErrorOnRequest(transctionResponse, lang, false)) {
-    return <ErrorComponent languageData={languageData} message={transctionResponse.message} />;
+  if (isErrorOnRequest(transctionPayRecsResponse, lang, false)) {
+    return <ErrorComponent languageData={languageData} message={transctionPayRecsResponse.message} />;
   }
 
-  return <TransactionsTable languageData={languageData} response={transctionResponse.data} />;
+  return <TransactionsTable languageData={languageData} response={transctionPayRecsResponse.data.items || []} />;
 }

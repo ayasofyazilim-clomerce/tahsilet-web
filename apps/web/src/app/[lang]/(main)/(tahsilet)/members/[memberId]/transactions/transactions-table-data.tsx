@@ -1,5 +1,8 @@
 import type {TahsilEt_Transactions_ListTransactionResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import {$TahsilEt_Transactions_ListTransactionResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {
+  $TahsilEt_Transactions_Enums_TransactionType,
+  $TahsilEt_Transactions_ListTransactionResponseDto,
+} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import type {
   TanstackTableColumnLink,
   TanstackTableCreationProps,
@@ -72,9 +75,10 @@ function transactionsColumns(
   memberId: string,
 ) {
   if (isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies)) {
-    links.transactionType = {
+    links.logicalRef = {
       prefix: `/members/${memberId}/transactions/`,
       targetAccessorKey: "id",
+      suffix: "/details",
     };
   }
 
@@ -88,6 +92,20 @@ function transactionsColumns(
       locale,
     },
     links,
+    badges: {
+      logicalRef: {
+        values: $TahsilEt_Transactions_Enums_TransactionType.enum.map((item) => ({
+          label: item,
+          position: "before",
+          conditions: [
+            {
+              conditionAccessorKey: `transactionType`,
+              when: (value) => value === item,
+            },
+          ],
+        })),
+      },
+    },
   });
 }
 
@@ -98,12 +116,12 @@ export function transactionsTable(
   memberId: string,
 ): TransactionsTable {
   const table: TransactionsTable = {
-    fillerColumn: "transactionType",
+    fillerColumn: "logicalRef",
     columnVisibility: {
       type: "show",
-      columns: ["transactionType", "transactionDate", "debit", "credit", "documentType"],
+      columns: ["logicalRef", "transactionDate", "debit", "credit", "documentType"],
     },
-    columnOrder: ["transactionType", "transactionDate", "debit", "credit", "documentType"],
+    columnOrder: ["logicalRef", "debit", "credit", "transactionDate", "documentType"],
     tableActions: transactionsTableActions(languageData, router, grantedPolicies, memberId),
     rowActions: transactionsRowActions(languageData, router, grantedPolicies),
   };
