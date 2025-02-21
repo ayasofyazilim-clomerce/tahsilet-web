@@ -35,7 +35,6 @@ function tenantsTableActions(
   }
   return actions;
 }
-
 const tenantsColumns = (
   locale: string,
   languageData: SaasServiceResource,
