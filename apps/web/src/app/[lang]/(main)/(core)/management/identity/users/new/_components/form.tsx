@@ -3,26 +3,23 @@
 import type {
   Volo_Abp_Identity_IdentityRoleDto,
   Volo_Abp_Identity_IdentityUserCreateDto,
-  Volo_Abp_Identity_OrganizationUnitLookupDto,
-} from "@ayasofyazilim/core-saas/IdentityService";
-import {$Volo_Abp_Identity_IdentityUserCreateDto} from "@ayasofyazilim/core-saas/IdentityService";
+} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {$Volo_Abp_Identity_IdentityUserCreateDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {SchemaForm} from "@repo/ayasofyazilim-ui/organisms/schema-form";
 import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schema-form/utils";
 import {CustomMultiSelectWidget} from "@repo/ayasofyazilim-ui/organisms/schema-form/widgets";
+import {handlePostResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {handlePostResponse} from "@repo/utils/api";
-import {postUserApi} from "src/actions/core/IdentityService/post-actions";
+import {postUserApi} from "src/actions/core/TahsiletService/post-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function Form({
   languageData,
   roleList,
-  organizationList,
 }: {
   languageData: IdentityServiceResource;
   roleList: Volo_Abp_Identity_IdentityRoleDto[];
-  organizationList: Volo_Abp_Identity_OrganizationUnitLookupDto[];
 }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -35,9 +32,6 @@ export default function Form({
       roleNames: {
         "ui:widget": "Role",
       },
-      organizationUnitIds: {
-        "ui:widget": "OrganizationUnit",
-      },
       password: {
         "ui:widget": "password",
       },
@@ -49,15 +43,11 @@ export default function Form({
       },
       isActive: {
         "ui:widget": "switch",
+        "ui:className": "md:col-span-2",
       },
       lockoutEnabled: {
         "ui:widget": "switch",
-      },
-      phoneNumberConfirmed: {
-        "ui:widget": "switch",
-      },
-      shouldChangePasswordOnNextLogin: {
-        "ui:widget": "switch",
+        "ui:className": "md:col-span-2",
       },
       "ui:className": "md:grid md:grid-cols-2 md:gap-2",
     },
@@ -78,11 +68,8 @@ export default function Form({
           "email",
           "phoneNumber",
           "roleNames",
-          "organizationUnitIds",
           "isActive",
           "lockoutEnabled",
-          "phoneNumberConfirmed",
-          "shouldChangePasswordOnNextLogin",
         ],
       }}
       onSubmit={({formData}) => {
@@ -102,12 +89,6 @@ export default function Form({
           optionList: roleList.map((role) => ({
             label: role.name || "",
             value: role.name || "",
-          })),
-        }),
-        OrganizationUnit: CustomMultiSelectWidget({
-          optionList: organizationList.map((organization) => ({
-            label: organization.displayName || "",
-            value: organization.id || "",
           })),
         }),
       }}

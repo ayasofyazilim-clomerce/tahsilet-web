@@ -1,13 +1,13 @@
 "use client";
 
-import type {Volo_Abp_Identity_IdentityRoleCreateDto} from "@ayasofyazilim/core-saas/IdentityService";
-import {$Volo_Abp_Identity_IdentityRoleCreateDto} from "@ayasofyazilim/core-saas/IdentityService";
+import type {Volo_Abp_Identity_IdentityRoleCreateDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {$Volo_Abp_Identity_IdentityRoleCreateDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {SchemaForm} from "@repo/ayasofyazilim-ui/organisms/schema-form";
 import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schema-form/utils";
+import {handlePostResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {handlePostResponse} from "@repo/utils/api";
-import {postRoleApi} from "src/actions/core/IdentityService/post-actions";
+import {postRoleApi} from "src/actions/core/TahsiletService/post-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function Form({languageData}: {languageData: IdentityServiceResource}) {

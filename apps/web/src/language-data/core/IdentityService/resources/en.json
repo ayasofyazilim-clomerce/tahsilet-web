@@ -82,7 +82,7 @@
   "Form.User.email": "Email",
   "Form.User.emailAddress": "Email Address",
   "Form.User.phoneNumber": "Phone Number",
-  "Form.User.Password": "Password",
+  "Form.User.password": "Password",
   "Form.User.accessFailedCount": "Access Failed Count",
   "Form.User.creationTime": "Creation Time",
   "Form.User.lastModificationTime": "Last Modification Time",
@@ -245,5 +245,20 @@
   "Grant.All.Permissions": "Grant All Permissions",
   "Permissions.Get.Fail": "An error occurred while getting permissions.",
   "Permissions.Update.Success": "Permissions saved successfully.",
-  "Permissions.Update.Fail": "An error occurred while saving permissions."
+  "Permissions.Update.Fail": "An error occurred while saving permissions.",
+
+  "Member": "Member",
+  "Members": "Members",
+  "Transaction.New": "New Transaction",
+  "Payment.New": "New Payment",
+  "Member.New": "Add new member",
+  "Transaction.Close": "Close transaction",
+  "Member.edit": "Edit member",
+  "Member.New.Description": "You can create a new member from here.",
+  "Member.Edit.Description": "You can update the member's details from here.",
+  "Transaction.Create.Description": "You can create a new transaction from here.",
+  "Transaction.Close.Description": " Are you sure you want to close this transaction.",
+  "Form.Transaction.PayRec.amount": "Remaining Payment Amount",
+  "Form.Transaction.PayRec.paidAmount": "Amount Paid",
+  "Transaction.Edit.Description": "You can update the transaction's details from here."
 }

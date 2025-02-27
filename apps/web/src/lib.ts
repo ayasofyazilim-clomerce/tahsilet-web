@@ -1,8 +1,9 @@
 "use server";
-import {IdentityServiceClient} from "@ayasofyazilim/core-saas/IdentityService";
 import {AccountServiceClient} from "@ayasofyazilim/core-saas/AccountService";
-import {SaasServiceClient} from "@ayasofyazilim/core-saas/SaasService";
 import {AdministrationServiceClient} from "@ayasofyazilim/core-saas/AdministrationService";
+import {IdentityServiceClient} from "@ayasofyazilim/core-saas/IdentityService";
+import {SaasServiceClient} from "@ayasofyazilim/core-saas/SaasService";
+import {TAHSILETServiceClient} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import type {Session} from "@repo/utils/auth";
 import {auth} from "@repo/utils/auth/next-auth";
 
@@ -43,6 +44,16 @@ export async function getAdministrationServiceClient(session?: Session | null) {
   const userData = session || (await auth());
   const token = userData?.user?.access_token;
   return new AdministrationServiceClient({
+    TOKEN: token,
+    BASE: process.env.BASE_URL,
+    HEADERS,
+  });
+}
+
+export async function getTahsiletServiceClient(session?: Session | null) {
+  const userData = session || (await auth());
+  const token = userData?.user?.access_token;
+  return new TAHSILETServiceClient({
     TOKEN: token,
     BASE: process.env.BASE_URL,
     HEADERS,

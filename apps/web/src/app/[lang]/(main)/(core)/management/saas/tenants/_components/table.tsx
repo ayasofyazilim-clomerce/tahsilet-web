@@ -1,30 +1,25 @@
 "use client";
 
-import type {
-  PagedResultDto_SaasTenantDto,
-  Volo_Saas_Host_Dtos_EditionLookupDto,
-} from "@ayasofyazilim/core-saas/SaasService";
+import type {PagedResultDto_TenantDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import TanstackTable from "@repo/ayasofyazilim-ui/molecules/tanstack-table";
-import {useParams, useRouter} from "next/navigation";
 import {useGrantedPolicies} from "@repo/utils/policies";
+import {useParams, useRouter} from "next/navigation";
 import type {SaasServiceResource} from "src/language-data/core/SaasService";
 import {tableData} from "./tenants-table-data";
 
 function TenantsTable({
   response,
   languageData,
-  editionList,
 }: {
-  response: PagedResultDto_SaasTenantDto;
+  response: PagedResultDto_TenantDto;
   languageData: SaasServiceResource;
-  editionList: Volo_Saas_Host_Dtos_EditionLookupDto[];
 }) {
   const router = useRouter();
   const {lang} = useParams<{lang: string}>();
   const {grantedPolicies} = useGrantedPolicies();
 
   const columns = tableData.tenants.columns(lang, languageData, grantedPolicies);
-  const table = tableData.tenants.table(languageData, router, grantedPolicies, editionList);
+  const table = tableData.tenants.table(languageData, router, grantedPolicies);
 
   return <TanstackTable {...table} columns={columns} data={response.items || []} rowCount={response.totalCount} />;
 }

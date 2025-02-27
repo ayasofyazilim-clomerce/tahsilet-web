@@ -79,7 +79,7 @@
   "Form.User.userName": "Kullanıcı Adı",
   "Form.User.name": "Ad",
   "Form.User.surname": "Soyad",
-  "Form.User.Password": "Şifre",
+  "Form.User.password": "Şifre",
   "Form.User.email": "E-posta",
   "Form.User.emailAddress": "E-posta Adresi",
   "Form.User.phoneNumber": "Telefon Numarası",
@@ -248,5 +248,20 @@
   "Grant.All.Permissions": "Tüm İzinleri Ver",
   "Permissions.Get.Fail": "İzinler alınırken bir hata oluştu.",
   "Permissions.Update.Success": "İzinler başarıyla kaydedildi.",
-  "Permissions.Update.Fail": "İzinler kaydedilirken bir hata oluştu."
+  "Permissions.Update.Fail": "İzinler kaydedilirken bir hata oluştu.",
+
+  "Member": "Üye",
+  "Members": "Üyeler",
+  "Transaction.New": "Yeni İşlem",
+  "Payment.New": "Yeni Ödeme",
+  "Member.New": "Yeni Üye Ekle",
+  "Transaction.Close": "İşlemi Kapat",
+  "Member.edit": "Üye Düzenle",
+  "Member.New.Description": "Buradan yeni bir üye oluşturabilirsiniz.",
+  "Member.Edit.Description": "Buradan üyenin bilgilerini güncelleyebilirsiniz.",
+  "Transaction.Create.Description": "Buradan yeni bir işlem oluşturabilirsiniz.",
+  "Transaction.Close.Description": "Bu işlemi kapatmak istediğinize emin misiniz?",
+  "Form.Transaction.PayRec.amount": "Kalan Tahsilat Tutarı",
+  "Form.Transaction.PayRec.paidAmount": "ödenen Tutar",
+  "Transaction.Edit.Description": "Buradan işlem bilgilerini görebilirsiniz."
 }

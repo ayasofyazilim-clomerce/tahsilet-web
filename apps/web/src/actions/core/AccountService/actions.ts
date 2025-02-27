@@ -21,21 +21,27 @@ export async function signInServerApi({
   tenantId,
   userName,
   password,
+  redirectTo,
 }: {
   tenantId: string;
   userName: string;
   password: string;
+  redirectTo: string;
 }) {
   try {
     await signIn("credentials", {
       username: userName,
       password,
       tenantId,
-      redirect: false,
+      redirect: true,
+      redirectTo,
     });
     return structuredSuccessResponse("");
   } catch (error) {
     const err = error as {message: string};
+    if (err.message === "NEXT_REDIRECT") {
+      throw error;
+    }
     return {
       type: "error" as const,
       message: err.message,
@@ -62,7 +68,7 @@ export async function signUpServerApi({
         userName,
         emailAddress: email,
         password,
-        appName: process.env.CLIENT_ID || "",
+        appName: process.env.ABP_APP_NAME || process.env.CLIENT_ID || "",
         returnUrl: "",
       },
     });
@@ -83,7 +89,7 @@ export async function sendPasswordResetCodeApi({tenantId, email}: {tenantId: str
     const response = await client.account.postApiAccountSendPasswordResetCode({
       requestBody: {
         email,
-        appName: process.env.CLIENT_ID || "",
+        appName: process.env.ABP_APP_NAME || process.env.CLIENT_ID || "",
         returnUrl: "",
       },
     });
@@ -144,16 +150,7 @@ export async function resetPasswordApi({
   }
 }
 //unupdated functions
-export async function getGrantedPoliciesApi() {
-  try {
-    const client = await getAccountServiceClient();
-    const response = await client.abpApplicationConfiguration.getApiAbpApplicationConfiguration();
-    const grantedPolicies = response.auth?.grantedPolicies;
-    return grantedPolicies;
-  } catch (error) {
-    return undefined;
-  }
-}
+
 export async function getSessionsApi(data: GetApiAccountSessionsData) {
   try {
     const client = await getAccountServiceClient();
