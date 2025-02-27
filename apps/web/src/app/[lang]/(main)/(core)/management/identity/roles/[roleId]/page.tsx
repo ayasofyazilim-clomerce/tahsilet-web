@@ -1,15 +1,15 @@
 "use server";
 
-import {isErrorOnRequest} from "@repo/utils/api";
-import {isUnauthorized} from "@repo/utils/policies";
-import {getRoleDetailsByIdApi} from "src/actions/core/TahsiletService/actions";
-import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
-import {getResourceData} from "src/language-data/core/IdentityService";
+import { isErrorOnRequest } from "@repo/utils/api";
+import ErrorComponent from "@repo/ui/components/error-component";
+import { getResourceData } from "src/language-data/core/IdentityService";
 import Form from "./_components/form";
+import { isUnauthorized } from "@repo/utils/policies";
+import { getRoleDetailsByIdApi } from "@/actions/core/TahsiletService/actions";
 
-export default async function Page({params}: {params: {lang: string; roleId: string}}) {
-  const {lang, roleId} = params;
-  const {languageData} = await getResourceData(lang);
+export default async function Page({ params }: { params: { lang: string; roleId: string } }) {
+  const { lang, roleId } = params;
+  const { languageData } = await getResourceData(lang);
   await isUnauthorized({
     requiredPolicies: ["AbpIdentity.Roles.Update"],
     lang,
