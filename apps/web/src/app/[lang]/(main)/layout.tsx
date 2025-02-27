@@ -1,23 +1,22 @@
 "use server";
 import MainAdminLayout from "@repo/ui/theme/main-admin-layout";
-import { getGrantedPoliciesApi, structuredError } from "@repo/utils/api";
-import { signOutServer } from "@repo/utils/auth";
-import { auth } from "@repo/utils/auth/next-auth";
-import type { Policy } from "@repo/utils/policies";
-import { LogOut } from "lucide-react";
-import { isRedirectError } from "next/dist/client/components/redirect";
+import {getGrantedPoliciesApi, structuredError} from "@repo/utils/api";
+import {signOutServer} from "@repo/utils/auth";
+import {auth} from "@repo/utils/auth/next-auth";
+import type {Policy} from "@repo/utils/policies";
+import {LogOut} from "lucide-react";
+import {isRedirectError} from "next/dist/client/components/redirect";
 import ErrorComponent from "@repo/ui/components/error-component";
-import { myProfileApi } from "@/actions/core/AccountService/actions";
+import {myProfileApi} from "@/actions/core/AccountService/actions";
 import unirefund from "public/unirefund.png";
-import { getResourceData } from "src/language-data/core/AbpUiNavigation";
+import {getResourceData} from "src/language-data/core/AbpUiNavigation";
 import Providers from "src/providers/providers";
-import { getBaseLink } from "src/utils";
-import { Novu } from "@/utils/navbar/notification";
-import { getNavbarFromDB } from "../../../utils/navbar/navbar-data";
-import { getProfileMenuFromDB } from "../../../utils/navbar/navbar-profile-data";
+import {getBaseLink} from "src/utils";
+import {getNavbarFromDB} from "../../../utils/navbar/navbar-data";
+import {getProfileMenuFromDB} from "../../../utils/navbar/navbar-profile-data";
 
 interface LayoutProps {
-  params: { lang: string };
+  params: {lang: string};
   children: JSX.Element;
 }
 const appName = process.env.APPLICATION_NAME || "UNIREFUND";
@@ -27,7 +26,7 @@ async function getApiRequests() {
     const requiredRequests = await Promise.all([getGrantedPoliciesApi(), myProfileApi()]);
 
     const optionalRequests = await Promise.allSettled([]);
-    return { requiredRequests, optionalRequests };
+    return {requiredRequests, optionalRequests};
   } catch (error) {
     if (!isRedirectError(error)) {
       return structuredError(error);
@@ -36,9 +35,9 @@ async function getApiRequests() {
   }
 }
 
-export default async function Layout({ children, params }: LayoutProps) {
-  const { lang } = params;
-  const { languageData } = await getResourceData(lang);
+export default async function Layout({children, params}: LayoutProps) {
+  const {lang} = params;
+  const {languageData} = await getResourceData(lang);
   const session = await auth();
   const apiRequests = await getApiRequests();
 
