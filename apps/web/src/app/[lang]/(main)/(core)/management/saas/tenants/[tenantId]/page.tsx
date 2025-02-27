@@ -1,15 +1,15 @@
 "use server";
 
-import {isErrorOnRequest} from "@repo/utils/api";
-import {isUnauthorized} from "@repo/utils/policies";
-import {getTenantDetailsByIdApi} from "src/actions/core/TahsiletService/actions";
-import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
-import {getResourceData} from "src/language-data/core/SaasService";
+import { isErrorOnRequest } from "@repo/utils/api";
+import { isUnauthorized } from "@repo/utils/policies";
+import { getTenantDetailsByIdApi } from "src/actions/core/TahsiletService/actions";
+import { getResourceData } from "src/language-data/core/SaasService";
 import Form from "./_components/form";
+import ErrorComponent from "@repo/ui/components/error-component";
 
-export default async function Page({params}: {params: {lang: string; tenantId: string}}) {
-  const {lang, tenantId} = params;
-  const {languageData} = await getResourceData(lang);
+export default async function Page({ params }: { params: { lang: string; tenantId: string } }) {
+  const { lang, tenantId } = params;
+  const { languageData } = await getResourceData(lang);
   await isUnauthorized({
     requiredPolicies: ["AbpTenantManagement.Tenants.Update"],
     lang,
