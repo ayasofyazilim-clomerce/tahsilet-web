@@ -1,4 +1,4 @@
-import {Volo_Saas_Host_Dtos_SaasTenantDto} from "@ayasofyazilim/core-saas/SaasService";
+import type {Volo_Saas_Host_Dtos_SaasTenantDto} from "@ayasofyazilim/core-saas/SaasService";
 import type {Volo_Abp_TenantManagement_TenantDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {$Volo_Abp_TenantManagement_TenantDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import type {

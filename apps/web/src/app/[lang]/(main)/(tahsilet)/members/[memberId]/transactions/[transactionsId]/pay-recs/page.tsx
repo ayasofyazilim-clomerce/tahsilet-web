@@ -2,10 +2,10 @@
 
 import {isErrorOnRequest} from "@repo/utils/api";
 import {isUnauthorized} from "@repo/utils/policies";
+import ErrorComponent from "@repo/ui/components/error-component";
 import {getTransactionListWithPayRecsApi} from "src/actions/core/TahsiletService/actions";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import TransactionsTable from "./table";
-import ErrorComponent from "@repo/ui/components/error-component";
 
 export default async function Page({
   params,

@@ -3,10 +3,10 @@
 import type {GetApiIdentityRolesData} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {isErrorOnRequest} from "@repo/utils/api";
 import ErrorComponent from "@repo/ui/components/error-component";
-import {getResourceData} from "src/language-data/core/IdentityService";
-import RolesTable from "./_components/table";
 import {isUnauthorized} from "@repo/utils/policies";
+import {getResourceData} from "src/language-data/core/IdentityService";
 import {getRolesApi} from "@/actions/core/TahsiletService/actions";
+import RolesTable from "./_components/table";
 
 export default async function Page({
   params,

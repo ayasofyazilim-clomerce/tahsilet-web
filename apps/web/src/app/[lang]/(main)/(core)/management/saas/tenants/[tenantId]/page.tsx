@@ -2,10 +2,10 @@
 
 import {isErrorOnRequest} from "@repo/utils/api";
 import {isUnauthorized} from "@repo/utils/policies";
+import ErrorComponent from "@repo/ui/components/error-component";
 import {getTenantDetailsByIdApi} from "src/actions/core/TahsiletService/actions";
 import {getResourceData} from "src/language-data/core/SaasService";
 import Form from "./_components/form";
-import ErrorComponent from "@repo/ui/components/error-component";
 
 export default async function Page({params}: {params: {lang: string; tenantId: string}}) {
   const {lang, tenantId} = params;

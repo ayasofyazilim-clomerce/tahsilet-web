@@ -2,8 +2,8 @@
 
 import {isErrorOnRequest} from "@repo/utils/api";
 import {isUnauthorized} from "@repo/utils/policies";
-import {getPermissionsApi, getRoleDetailsByIdApi} from "src/actions/core/TahsiletService/actions";
 import ErrorComponent from "@repo/ui/components/error-component";
+import {getPermissionsApi, getRoleDetailsByIdApi} from "src/actions/core/TahsiletService/actions";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import RolePermissions from "./_components/permissions";
 
