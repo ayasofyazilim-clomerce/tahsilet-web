@@ -2,10 +2,10 @@
 
 import type {GetApiIdentityRolesData} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {isErrorOnRequest} from "@repo/utils/api";
+import ErrorComponent from "@repo/ui/components/error-component";
 import {isUnauthorized} from "@repo/utils/policies";
-import {getRolesApi} from "src/actions/core/TahsiletService/actions";
-import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
 import {getResourceData} from "src/language-data/core/IdentityService";
+import {getRolesApi} from "@/actions/core/TahsiletService/actions";
 import RolesTable from "./_components/table";
 
 export default async function Page({

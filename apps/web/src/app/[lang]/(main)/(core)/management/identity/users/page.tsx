@@ -3,8 +3,8 @@
 import type {GetApiIdentityUsersData} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {isErrorOnRequest} from "@repo/utils/api";
 import {isUnauthorized} from "@repo/utils/policies";
+import ErrorComponent from "@repo/ui/components/error-component";
 import {getUsersApi} from "src/actions/core/TahsiletService/actions";
-import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import UsersTable from "./_components/table";
 

@@ -1,3 +1,4 @@
+import type {Volo_Saas_Host_Dtos_SaasTenantDto} from "@ayasofyazilim/core-saas/SaasService";
 import type {Volo_Abp_TenantManagement_TenantDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {$Volo_Abp_TenantManagement_TenantDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import type {
@@ -12,9 +13,9 @@ import {Plus} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type {SaasServiceResource} from "src/language-data/core/SaasService";
 
-type TenantsTable = TanstackTableCreationProps<Volo_Abp_TenantManagement_TenantDto>;
+type TenantsTable = TanstackTableCreationProps<Volo_Saas_Host_Dtos_SaasTenantDto>;
 
-const links: Partial<Record<keyof Volo_Abp_TenantManagement_TenantDto, TanstackTableColumnLink>> = {};
+const links: Partial<Record<keyof Volo_Saas_Host_Dtos_SaasTenantDto, TanstackTableColumnLink>> = {};
 
 function tenantsTableActions(
   languageData: SaasServiceResource,

@@ -2,7 +2,7 @@
 
 import {isUnauthorized} from "@repo/utils/policies";
 import {isErrorOnRequest} from "@repo/utils/api";
-import ErrorComponent from "src/app/[lang]/(main)/_components/error-component";
+import ErrorComponent from "@repo/ui/components/error-component";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import {getAllRolesApi} from "src/actions/core/TahsiletService/actions";
 import Form from "./_components/form";
