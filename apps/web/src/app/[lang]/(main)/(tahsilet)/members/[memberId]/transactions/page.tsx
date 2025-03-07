@@ -1,10 +1,10 @@
 "use server";
 
-import { isErrorOnRequest } from "@repo/utils/api";
-import { isUnauthorized } from "@repo/utils/policies";
-import { getTransactionListWithPayRecsApi } from "src/actions/core/TahsiletService/actions";
+import {isErrorOnRequest} from "@repo/utils/api";
+import {isUnauthorized} from "@repo/utils/policies";
+import {getTransactionListWithPayRecsApi} from "src/actions/core/TahsiletService/actions";
 import ErrorComponent from "@repo/ui/components/error-component";
-import { getResourceData } from "src/language-data/core/IdentityService";
+import {getResourceData} from "src/language-data/core/IdentityService";
 import TransactionsTable from "./table";
 
 export default async function Page({
@@ -15,8 +15,8 @@ export default async function Page({
     lang: string;
   };
 }) {
-  const { lang, memberId } = params;
-  const { languageData } = await getResourceData(lang);
+  const {lang, memberId} = params;
+  const {languageData} = await getResourceData(lang);
   await isUnauthorized({
     requiredPolicies: ["TahsilEt.Transactions"],
     lang,

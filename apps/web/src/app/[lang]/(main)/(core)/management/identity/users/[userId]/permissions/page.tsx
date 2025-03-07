@@ -1,15 +1,15 @@
 "use server";
 
-import { isErrorOnRequest } from "@repo/utils/api";
-import { isUnauthorized } from "@repo/utils/policies";
+import {isErrorOnRequest} from "@repo/utils/api";
+import {isUnauthorized} from "@repo/utils/policies";
 import ErrorComponent from "@repo/ui/components/error-component";
-import { getPermissionsApi, getUserDetailsByIdApi } from "src/actions/core/TahsiletService/actions";
-import { getResourceData } from "src/language-data/core/IdentityService";
+import {getPermissionsApi, getUserDetailsByIdApi} from "src/actions/core/TahsiletService/actions";
+import {getResourceData} from "src/language-data/core/IdentityService";
 import UserPermissions from "./_components/permissions";
 
-export default async function Page({ params }: { params: { lang: string; userId: string } }) {
-  const { lang, userId } = params;
-  const { languageData } = await getResourceData(lang);
+export default async function Page({params}: {params: {lang: string; userId: string}}) {
+  const {lang, userId} = params;
+  const {languageData} = await getResourceData(lang);
   await isUnauthorized({
     requiredPolicies: ["AbpIdentity.Users.ManagePermissions"],
     lang,

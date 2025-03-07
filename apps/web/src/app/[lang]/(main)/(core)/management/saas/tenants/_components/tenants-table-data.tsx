@@ -1,17 +1,17 @@
-import { Volo_Saas_Host_Dtos_SaasTenantDto } from "@ayasofyazilim/core-saas/SaasService";
-import type { Volo_Abp_TenantManagement_TenantDto } from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import { $Volo_Abp_TenantManagement_TenantDto } from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {Volo_Saas_Host_Dtos_SaasTenantDto} from "@ayasofyazilim/core-saas/SaasService";
+import type {Volo_Abp_TenantManagement_TenantDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {$Volo_Abp_TenantManagement_TenantDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import type {
   TanstackTableColumnLink,
   TanstackTableCreationProps,
   TanstackTableTableActionsType,
 } from "@repo/ayasofyazilim-ui/molecules/tanstack-table/types";
-import { tanstackTableCreateColumnsByRowData } from "@repo/ayasofyazilim-ui/molecules/tanstack-table/utils";
-import type { Policy } from "@repo/utils/policies";
-import { isActionGranted } from "@repo/utils/policies";
-import { Plus } from "lucide-react";
-import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import type { SaasServiceResource } from "src/language-data/core/SaasService";
+import {tanstackTableCreateColumnsByRowData} from "@repo/ayasofyazilim-ui/molecules/tanstack-table/utils";
+import type {Policy} from "@repo/utils/policies";
+import {isActionGranted} from "@repo/utils/policies";
+import {Plus} from "lucide-react";
+import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
+import type {SaasServiceResource} from "src/language-data/core/SaasService";
 
 type TenantsTable = TanstackTableCreationProps<Volo_Saas_Host_Dtos_SaasTenantDto>;
 

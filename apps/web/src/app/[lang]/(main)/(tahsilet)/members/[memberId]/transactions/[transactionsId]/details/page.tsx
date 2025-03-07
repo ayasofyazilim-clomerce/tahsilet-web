@@ -1,10 +1,10 @@
 "use server";
 
-import { isErrorOnRequest } from "@repo/utils/api";
-import { isUnauthorized } from "@repo/utils/policies";
-import { getTransactionApi } from "src/actions/core/TahsiletService/actions";
-import { getResourceData } from "src/language-data/core/IdentityService";
-import { getBaseLink } from "src/utils";
+import {isErrorOnRequest} from "@repo/utils/api";
+import {isUnauthorized} from "@repo/utils/policies";
+import {getTransactionApi} from "src/actions/core/TahsiletService/actions";
+import {getResourceData} from "src/language-data/core/IdentityService";
+import {getBaseLink} from "src/utils";
 import Form from "./_components/form";
 import ErrorComponent from "@repo/ui/components/error-component";
 
@@ -17,8 +17,8 @@ export default async function Page({
     lang: string;
   };
 }) {
-  const { lang, memberId, transactionsId } = params;
-  const { languageData } = await getResourceData(lang);
+  const {lang, memberId, transactionsId} = params;
+  const {languageData} = await getResourceData(lang);
   await isUnauthorized({
     requiredPolicies: ["TahsilEt.Transactions"],
     lang,
