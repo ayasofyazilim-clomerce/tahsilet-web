@@ -1,4 +1,4 @@
-import { ApiError } from "@ayasofyazilim/core-saas/AccountService";
+import {ApiError} from "@ayasofyazilim/core-saas/AccountService";
 
 export interface BaseServerResponse {
   message: string;
@@ -15,9 +15,7 @@ export interface ApiErrorServerResponse {
   message: string;
 }
 
-export type ServerResponse<T> =
-  | ApiErrorServerResponse
-  | SuccessServerResponse<T>;
+export type ServerResponse<T> = ApiErrorServerResponse | SuccessServerResponse<T>;
 
 // export type ErrorTypes = ApiErrorServerResponse;
 // export interface ErrorServerResponse {

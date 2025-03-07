@@ -1,6 +1,6 @@
 import "next-auth";
 import "@auth/core/jwt";
-import { MyUser, UserRole } from "./auth-types";
+import {MyUser, UserRole} from "./auth-types";
 
 declare module "next-auth" {
   interface Session {

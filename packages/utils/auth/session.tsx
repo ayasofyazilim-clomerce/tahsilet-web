@@ -1,6 +1,6 @@
 "use client";
-import type { Session } from "next-auth";
-import { createContext, useContext, useMemo } from "react";
+import type {Session} from "next-auth";
+import {createContext, useContext, useMemo} from "react";
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -17,12 +17,12 @@ export const useSession = () => {
   return useContext(SessionContext);
 };
 
-export function SessionProvider({ children, session }: ProvidersProps) {
+export function SessionProvider({children, session}: ProvidersProps) {
   const memoizedSessionKey = useMemo(() => {
     return new Date().valueOf();
   }, [session]);
   return (
-    <SessionContext.Provider key={memoizedSessionKey} value={{ session }}>
+    <SessionContext.Provider key={memoizedSessionKey} value={{session}}>
       {children}
     </SessionContext.Provider>
   );
