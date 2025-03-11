@@ -260,5 +260,17 @@
   "Transaction.Close.Description": " Are you sure you want to close this transaction.",
   "Form.Transaction.PayRec.amount": "Remaining Payment Amount",
   "Form.Transaction.PayRec.paidAmount": "Amount Paid",
-  "Transaction.Edit.Description": "You can update the transaction's details from here."
+  "Transaction.Edit.Description": "You can update the transaction's details from here.",
+
+  "Member.RemindPayment": "Remind Payment",
+  "Member.RemindPayment.Description": "Send a reminder to the member to make the payment.",
+  "Member.RemindPayment.Send": "Send",
+  "Member.RemindPayment.Success": "Payment reminder sent successfully.",
+  "error": "error",
+  "trigger_not_active": "Trigger Not Active",
+  "no_workflow_active_steps_defined": "No Workflow Active Steps Defined",
+  "no_workflow_steps_defined": "No Workflow Steps Defined",
+  "processed": "Processed",
+  "no_tenant_found": "No Tenant Found",
+  "invalid_recipients": "Invalid Recipients"
 }

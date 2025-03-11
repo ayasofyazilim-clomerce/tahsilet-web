@@ -18,13 +18,15 @@ import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schem
 import {handlePostResponse, handlePutResponse} from "@repo/utils/api";
 import type {Policy} from "@repo/utils/policies";
 import {isActionGranted} from "@repo/utils/policies";
-import {LucidePanelTopClose, Plus, Trash2} from "lucide-react";
+import {Bell, LucidePanelTopClose, Plus, Trash2} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 import {deleteMemberByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
+import {triggerTahsiletNotification} from "@repo/actions/tahsilet/Novu/actions";
 import {
   postTransactionClosePaymentsFifoApi,
   postTransactionExecutePaymentApi,
 } from "@repo/actions/tahsilet/TahsiletService/post-actions";
+import {toast} from "@/components/ui/sonner";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 type MembersTable = TanstackTableCreationProps<TahsilEt_Members_ListMemberResponseDto>;
@@ -55,15 +57,14 @@ function membersRowActions(
   router: AppRouterInstance,
   grantedPolicies: Record<Policy, boolean>,
 ) {
-  const actions: TanstackTableRowActionsType<TahsilEt_Members_ListMemberResponseDto>[] = [];
-
-  if (isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies)) {
-    actions.push({
+  const actions: TanstackTableRowActionsType<TahsilEt_Members_ListMemberResponseDto>[] = [
+    {
       type: "custom-dialog",
       actionLocation: "row",
       cta: languageData["Payment.New"],
       title: languageData["Payment.New"],
       icon: Plus,
+      condition: () => isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies),
       content: (row) => (
         <SchemaForm<TahsilEt_Transactions_ExecutePaymentDto>
           className="flex flex-col gap-4"
@@ -92,10 +93,8 @@ function membersRowActions(
           })}
         />
       ),
-    });
-  }
-  if (isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies)) {
-    actions.push({
+    },
+    {
       type: "confirmation-dialog",
       cta: languageData["Transaction.Close"],
       title: languageData["Transaction.Close"],
@@ -104,6 +103,7 @@ function membersRowActions(
       cancelText: languageData.Cancel,
       description: languageData["Transaction.Close.Description"],
       icon: LucidePanelTopClose,
+      condition: () => isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies),
       onConfirm: (row) => {
         void postTransactionClosePaymentsFifoApi({
           requestBody: {memberId: row.id || ""},
@@ -111,10 +111,33 @@ function membersRowActions(
           handlePostResponse(res, router);
         });
       },
-    });
-  }
-  if (isActionGranted(["TahsilEt.Members.Delete"], grantedPolicies)) {
-    actions.push({
+    },
+    {
+      type: "confirmation-dialog",
+      cta: languageData["Member.RemindPayment"],
+      title: languageData["Member.RemindPayment"],
+      actionLocation: "row",
+      confirmationText: languageData["Member.RemindPayment.Send"],
+      cancelText: languageData.Cancel,
+      description: languageData["Member.RemindPayment.Description"],
+      icon: Bell,
+      onConfirm: (row) => {
+        const score = Math.floor(Math.random() * 1900) + 1;
+        void triggerTahsiletNotification({
+          score,
+          subscriberId: row.id || "",
+          email: row.mail,
+          phone: row.tel || "",
+        }).then((res) => {
+          if (res.result.status === "processed") {
+            toast.success(languageData["Member.RemindPayment.Success"]);
+          } else {
+            toast.error(languageData[res.result.status as keyof typeof languageData]);
+          }
+        });
+      },
+    },
+    {
       type: "confirmation-dialog",
       cta: languageData.Delete,
       title: languageData.Delete,
@@ -123,6 +146,7 @@ function membersRowActions(
       cancelText: languageData.Cancel,
       description: languageData["Delete.Assurance"],
       icon: Trash2,
+      condition: () => isActionGranted(["TahsilEt.Members.Delete"], grantedPolicies),
       onConfirm: (row) => {
         void deleteMemberByIdApi({
           id: row.id || "",
@@ -134,8 +158,8 @@ function membersRowActions(
           handlePutResponse(res, router);
         });
       },
-    });
-  }
+    },
+  ];
   return actions;
 }
 const membersColumns = (

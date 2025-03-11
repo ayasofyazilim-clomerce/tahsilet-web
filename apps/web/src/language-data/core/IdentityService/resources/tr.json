@@ -263,5 +263,17 @@
   "Transaction.Close.Description": "Bu işlemi kapatmak istediğinize emin misiniz?",
   "Form.Transaction.PayRec.amount": "Kalan Tahsilat Tutarı",
   "Form.Transaction.PayRec.paidAmount": "ödenen Tutar",
-  "Transaction.Edit.Description": "Buradan işlem bilgilerini görebilirsiniz."
+  "Transaction.Edit.Description": "Buradan işlem bilgilerini görebilirsiniz.",
+
+  "Member.RemindPayment": "Tahsilatı Hatırlat",
+  "Member.RemindPayment.Description": "Üyenin tahsilat yapması için bir hatırlatma gönderin.",
+  "Member.RemindPayment.Send": "Gönder",
+  "Member.RemindPayment.Success": "Ödeme hatırlatıcısı başarıyla gönderildi.",
+  "error": "hata",
+  "trigger_not_active": "Tetikleyici Aktif Değil",
+  "no_workflow_active_steps_defined": "Hiçbir Workflow Aktif Adımı Tanımlanmadı",
+  "no_workflow_steps_defined": "Hiçbir Workflow Adımı Tanımlanmadı",
+  "processed": "İşlendi",
+  "no_tenant_found": "Hiçbir Kiracı Bulunamadı",
+  "invalid_recipients": "Geçersiz Alıcılar"
 }
