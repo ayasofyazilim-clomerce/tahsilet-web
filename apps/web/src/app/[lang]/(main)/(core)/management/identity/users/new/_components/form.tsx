@@ -11,7 +11,7 @@ import {CustomMultiSelectWidget} from "@repo/ayasofyazilim-ui/organisms/schema-f
 import {handlePostResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {postUserApi} from "src/actions/core/TahsiletService/post-actions";
+import {postUserApi} from "@repo/actions/tahsilet/TahsiletService/post-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function Form({

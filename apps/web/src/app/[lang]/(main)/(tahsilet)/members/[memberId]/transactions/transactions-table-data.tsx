@@ -15,8 +15,8 @@ import type {Policy} from "@repo/utils/policies";
 import {isActionGranted} from "@repo/utils/policies";
 import {PlusCircle, Trash2} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
+import {deleteTransactionByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
-import {deleteTransactionByIdApi} from "../../../../../../../actions/core/TahsiletService/delete-actions";
 
 type TransactionsTable = TanstackTableCreationProps<TahsilEt_Transactions_ListTransactionResponseDto>;
 const links: Partial<Record<keyof TahsilEt_Transactions_ListTransactionResponseDto, TanstackTableColumnLink>> = {};

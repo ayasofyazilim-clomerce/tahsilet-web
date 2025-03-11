@@ -6,7 +6,7 @@ import {createUiSchemaWithResource, customPasswordValidate} from "@repo/ayasofya
 import {handlePutResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {postPasswordChangeApi} from "src/actions/core/TahsiletService/post-actions";
+import {postPasswordChangeApi} from "@repo/actions/tahsilet/TahsiletService/post-actions";
 import type {AccountServiceResource} from "src/language-data/core/AccountService";
 
 type PasswordForm = Volo_Abp_Account_ChangePasswordInput & {

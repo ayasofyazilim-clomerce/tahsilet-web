@@ -3,8 +3,8 @@
 import {isUnauthorized} from "@repo/utils/policies";
 import {isErrorOnRequest} from "@repo/utils/api";
 import ErrorComponent from "@repo/ui/components/error-component";
+import {getAllRolesApi} from "@repo/actions/tahsilet/TahsiletService/actions";
 import {getResourceData} from "src/language-data/core/IdentityService";
-import {getAllRolesApi} from "src/actions/core/TahsiletService/actions";
 import Form from "./_components/form";
 
 export default async function Page({params}: {params: {lang: string}}) {

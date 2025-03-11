@@ -11,8 +11,8 @@ import {isActionGranted, useGrantedPolicies} from "@repo/utils/policies";
 import {Trash2} from "lucide-react";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {deleteRoleByIdApi} from "src/actions/core/TahsiletService/delete-actions";
-import {putRoleApi} from "src/actions/core/TahsiletService/put-actions";
+import {deleteRoleByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
+import {putRoleApi} from "@repo/actions/tahsilet/TahsiletService/put-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function Form({

@@ -6,7 +6,7 @@ import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schem
 import {handlePutResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {putPersonalInfomationApi} from "src/actions/core/TahsiletService/put-actions";
+import {putPersonalInfomationApi} from "@repo/actions/tahsilet/TahsiletService/put-actions";
 import type {AccountServiceResource} from "src/language-data/core/AccountService";
 
 export default function PersonalInformation({

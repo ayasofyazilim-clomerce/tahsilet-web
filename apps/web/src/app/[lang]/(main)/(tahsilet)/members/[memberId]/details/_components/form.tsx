@@ -9,7 +9,7 @@ import {handlePutResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
 import {z} from "zod";
-import {putMemberByIdApi} from "src/actions/core/TahsiletService/put-actions";
+import {putMemberByIdApi} from "@repo/actions/tahsilet/TahsiletService/put-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function Form({

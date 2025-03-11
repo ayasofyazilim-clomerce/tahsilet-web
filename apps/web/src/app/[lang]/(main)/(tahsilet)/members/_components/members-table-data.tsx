@@ -20,11 +20,11 @@ import type {Policy} from "@repo/utils/policies";
 import {isActionGranted} from "@repo/utils/policies";
 import {LucidePanelTopClose, Plus, Trash2} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
-import {deleteMemberByIdApi} from "src/actions/core/TahsiletService/delete-actions";
+import {deleteMemberByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
 import {
   postTransactionClosePaymentsFifoApi,
   postTransactionExecutePaymentApi,
-} from "src/actions/core/TahsiletService/post-actions";
+} from "@repo/actions/tahsilet/TahsiletService/post-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 type MembersTable = TanstackTableCreationProps<TahsilEt_Members_ListMemberResponseDto>;
