@@ -4,7 +4,7 @@ import type {GetApiIdentityUsersData} from "@ayasofyazilim/tahsilet-saas/TAHSILE
 import {isErrorOnRequest} from "@repo/utils/api";
 import {isUnauthorized} from "@repo/utils/policies";
 import ErrorComponent from "@repo/ui/components/error-component";
-import {getUsersApi} from "src/actions/core/TahsiletService/actions";
+import {getUsersApi} from "@repo/actions/tahsilet/TahsiletService/actions";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import UsersTable from "./_components/table";
 

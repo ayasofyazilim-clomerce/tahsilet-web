@@ -11,8 +11,8 @@ import {isActionGranted, useGrantedPolicies} from "@repo/utils/policies";
 import {Trash2} from "lucide-react";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {deleteTenantsByIdApi} from "src/actions/core/TahsiletService/delete-actions";
-import {putTenantApi} from "src/actions/core/TahsiletService/put-actions";
+import {deleteTenantsByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
+import {putTenantApi} from "@repo/actions/tahsilet/TahsiletService/put-actions";
 import type {SaasServiceResource} from "src/language-data/core/SaasService";
 
 export default function Form({

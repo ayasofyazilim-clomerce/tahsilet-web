@@ -4,7 +4,7 @@ import type {GetApiMemberData} from "@ayasofyazilim/tahsilet-saas/TAHSILETServic
 import {isErrorOnRequest} from "@repo/utils/api";
 import {isUnauthorized} from "@repo/utils/policies";
 import ErrorComponent from "@repo/ui/components/error-component";
-import {getMemberApi} from "src/actions/core/TahsiletService/actions";
+import {getMemberApi} from "@repo/actions/tahsilet/TahsiletService/actions";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import MembersTable from "./_components/table";
 

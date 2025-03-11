@@ -7,7 +7,7 @@ import {
   getAllRolesApi,
   getUserDetailsByIdApi,
   getUsersAssignableRolesApi,
-} from "src/actions/core/TahsiletService/actions";
+} from "@repo/actions/tahsilet/TahsiletService/actions";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import Form from "./_components/form";
 

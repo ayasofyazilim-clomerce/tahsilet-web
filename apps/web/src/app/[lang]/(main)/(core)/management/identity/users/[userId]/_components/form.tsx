@@ -15,8 +15,8 @@ import {isActionGranted, useGrantedPolicies} from "@repo/utils/policies";
 import {Trash2} from "lucide-react";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {deleteUserByIdApi} from "src/actions/core/TahsiletService/delete-actions";
-import {putUserApi} from "src/actions/core/TahsiletService/put-actions";
+import {deleteUserByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
+import {putUserApi} from "@repo/actions/tahsilet/TahsiletService/put-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 type UserFormDto = Volo_Abp_Identity_IdentityUserDto & {

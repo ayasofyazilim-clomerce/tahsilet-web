@@ -7,7 +7,7 @@ import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schem
 import {handlePostResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {postTransactionApi} from "src/actions/core/TahsiletService/post-actions";
+import {postTransactionApi} from "@repo/actions/tahsilet/TahsiletService/post-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function Form({languageData, memberId}: {languageData: IdentityServiceResource; memberId: string}) {

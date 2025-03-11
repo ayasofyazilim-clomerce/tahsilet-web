@@ -4,7 +4,7 @@ import type {GetApiMultiTenancyTenantsData} from "@ayasofyazilim/tahsilet-saas/T
 import {isErrorOnRequest} from "@repo/utils/api";
 import {isUnauthorized} from "@repo/utils/policies";
 import ErrorComponent from "@repo/ui/components/error-component";
-import {getTenantsApi} from "src/actions/core/TahsiletService/actions";
+import {getTenantsApi} from "@repo/actions/tahsilet/TahsiletService/actions";
 import {getResourceData} from "src/language-data/core/SaasService";
 import TenantsTable from "./_components/table";
 

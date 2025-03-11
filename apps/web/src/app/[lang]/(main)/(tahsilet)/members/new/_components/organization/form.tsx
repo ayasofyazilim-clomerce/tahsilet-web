@@ -6,7 +6,7 @@ import AutoForm, {AutoFormSubmit} from "@repo/ayasofyazilim-ui/organisms/auto-fo
 import {handlePostResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {postMemberApi} from "src/actions/core/TahsiletService/post-actions";
+import {postMemberApi} from "@repo/actions/tahsilet/TahsiletService/post-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function MemberOrganizationForm({languageData}: {languageData: IdentityServiceResource}) {
