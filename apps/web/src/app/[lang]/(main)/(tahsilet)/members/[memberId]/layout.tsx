@@ -31,6 +31,10 @@ export default async function Layout({
             label: "Transaction",
             href: `${baseLink}transactions`,
           },
+          {
+            label: "Risk Report",
+            href: `${baseLink}risk`,
+          },
         ]}
         variant="simple">
         {children}
