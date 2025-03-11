@@ -60,6 +60,13 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "credit-yellow": "#ffcd02",
+        "credit-red": "#e74c3c",
+        "credit-orange": "#e67e22",
+        "credit-teal": "#1abc9c",
+        "credit-green": "#2ecc71",
+        "credit-brown": "#a38671",
+        "credit-blue": "#b8c9f1",
       },
 
       keyframes: {
