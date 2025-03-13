@@ -12,6 +12,7 @@
   "dependencies": {
     "next-auth": "5.0.0-beta.16",
     "@auth/core": "^0.30.0",
+    "@novu/api": "latest",
     "@ayasofyazilim/core-saas": "latest",
     "@ayasofyazilim/tahsilet-saas": "latest",
     "@repo/utils": "workspace:*",
