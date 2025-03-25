@@ -12,7 +12,6 @@
   "dependencies": {
     "next-auth": "5.0.0-beta.16",
     "@auth/core": "^0.30.0",
-    "@novu/api": "latest",
     "@ayasofyazilim/core-saas": "latest",
     "@ayasofyazilim/tahsilet-saas": "latest",
     "@repo/utils": "workspace:*",
@@ -20,7 +19,8 @@
     "@types/react-dom": "18.3.5",
     "next": "14.2.20",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "@novu/api": "latest"
   },
   "devDependencies": {
     "@types/negotiator": "0.6.3"
