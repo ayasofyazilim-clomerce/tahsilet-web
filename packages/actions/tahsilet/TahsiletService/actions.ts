@@ -112,13 +112,13 @@ export async function getPersonalInfomationApi() {
   }
 }
 
-export async function getMemberApi(data: GetApiMemberData) {
+export async function getMemberApi(data: GetApiMemberData, session?: Session | null) {
   try {
-    const client = await getTahsiletServiceClient();
+    const client = await getTahsiletServiceClient(session);
     const dataResponse = await client.member.getApiMember(data);
-    return structuredResponse(dataResponse);
+    return structuredSuccessResponse(dataResponse);
   } catch (error) {
-    return structuredError(error);
+    throw structuredError(error);
   }
 }
 export async function getTransactionApi(data: GetApiTransactionData) {
@@ -145,10 +145,8 @@ export async function getTransactionScorePrediction(id: string, session?: Sessio
   try {
     const client = await getTahsiletServiceClient(session);
     const dataResponse = await client.transaction.getApiAppTransactionScorePrediction({cardRef: id});
-    console.error(dataResponse);
     return structuredSuccessResponse(dataResponse);
   } catch (error) {
-    console.log(error);
     throw structuredError(error);
   }
 }

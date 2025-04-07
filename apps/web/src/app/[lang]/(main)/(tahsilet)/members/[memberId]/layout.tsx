@@ -24,15 +24,15 @@ export default async function Layout({
         orientation="vertical"
         tabList={[
           {
-            label: "Member Info",
+            label: languageData.MemberInfo,
             href: `${baseLink}details`,
           },
           {
-            label: "Transaction",
+            label: languageData.Transactions,
             href: `${baseLink}transactions`,
           },
           {
-            label: "Risk Report",
+            label: languageData.RiskReport,
             href: `${baseLink}risk`,
           },
         ]}

@@ -1,7 +1,7 @@
 import {toast} from "@/components/ui/sonner";
 import type {TahsilEt_Members_ListMemberResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {$TahsilEt_Members_ListMemberResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import {triggerTahsiletNotification} from "@repo/actions/tahsilet/Novu/actions";
+import {triggerTahsiletRemindPayment} from "@repo/actions/tahsilet/Novu/actions";
 import {deleteMemberByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
 import {postTransactionClosePaymentsFifoApi} from "@repo/actions/tahsilet/TahsiletService/post-actions";
 import type {
@@ -75,9 +75,9 @@ function membersRowActions(
       description: languageData["Member.RemindPayment.Description"],
       icon: Bell,
       onConfirm: (row) => {
-        const score = Math.floor(Math.random() * 1900) + 1;
-        void triggerTahsiletNotification({
-          score,
+        void triggerTahsiletRemindPayment({
+          sender: "Tahsilet",
+          subject: languageData["Member.RemindPayment.Subject"],
           subscriberId: row.id || "",
           email: row.mail,
           phone: row.tel || "",
