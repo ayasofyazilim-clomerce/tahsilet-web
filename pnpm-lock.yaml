@@ -43,8 +43,8 @@ importers:
         specifier: latest
         version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
       '@ayasofyazilim/tahsilet-saas':
-        specifier: latest
-        version: 0.0.3(magicast@0.3.5)(openapi-types@12.1.3)
+        specifier: ^0.0.4
+        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
       '@radix-ui/react-icons':
         specifier: ^1.3.0
         version: 1.3.0(react@18.3.1)
@@ -156,10 +156,10 @@ importers:
         version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
       '@ayasofyazilim/tahsilet-saas':
         specifier: latest
-        version: 0.0.3(magicast@0.3.5)(openapi-types@12.1.3)
+        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
       '@novu/api':
         specifier: latest
-        version: 0.5.0(zod@3.24.2)
+        version: 0.6.2(zod@3.24.2)
       '@repo/utils':
         specifier: workspace:*
         version: link:../utils
@@ -928,8 +928,8 @@ packages:
     resolution: {integrity: sha512-Iof0t+ZKdIEJS2ddm2HBqSMncalBNyKsYYlMq1tkH8vQHgtG7kZMPy2YTRHP6WlH/CKcHC3R5ulOf8xmC2H3UA==}
     hasBin: true
 
-  '@ayasofyazilim/tahsilet-saas@0.0.3':
-    resolution: {integrity: sha512-x8fjtppO1qX+PIEShLoCAcu3TFTBUO+xpiDY6uXd/pBX9B2hwCTA7J0Xj6OY/o78tiugDEl8ciBaZcyvstsY2Q==}
+  '@ayasofyazilim/tahsilet-saas@0.0.4':
+    resolution: {integrity: sha512-8u3UiJsCFBl76UcpIjiNCyoPb7/eYfUImbWdE5McMJ4XnnWL9FlxqspkSm5265K1doASggad7xa9cOyj8p7t9w==}
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -2401,8 +2401,8 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@novu/api@0.5.0':
-    resolution: {integrity: sha512-rqgfrp5HdMwjRPpI9algGx4X+cWXhMEh1Q4VJysfOc6fep8qg2D3ua1e9dU3zuzNz6+fhnrfZaGb2WYRjX5Mvw==}
+  '@novu/api@0.6.2':
+    resolution: {integrity: sha512-AXG9bDWSYysrHyhJ+x2PvFHV/N3PXy7WlsEnx6mSF7bJSqUG/TkQyjoXjiumVBYK0v4s8yJOSFMfvQHZ9pVtBQ==}
     hasBin: true
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.5.0
@@ -10668,7 +10668,7 @@ snapshots:
       - magicast
       - openapi-types
 
-  '@ayasofyazilim/tahsilet-saas@0.0.3(magicast@0.3.5)(openapi-types@12.1.3)':
+  '@ayasofyazilim/tahsilet-saas@0.0.4(magicast@0.3.5)(openapi-types@12.1.3)':
     dependencies:
       '@ayasofyazilim/sdk_generator': 0.0.13(magicast@0.3.5)(openapi-types@12.1.3)
       commander: 13.0.0
@@ -12181,7 +12181,7 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@novu/api@0.5.0(zod@3.24.2)':
+  '@novu/api@0.6.2(zod@3.24.2)':
     dependencies:
       zod: 3.24.2
 

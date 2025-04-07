@@ -4,7 +4,6 @@ import {
   getAllRolesApi,
   getUserDetailsByIdApi,
   getUsersAvailableOrganizationUnitsApi,
-  getUsersByIdOrganizationUnitsApi,
   getUsersByIdRolesApi,
 } from "@repo/actions/core/IdentityService/actions";
 import ErrorComponent from "@repo/ui/components/error-component";
@@ -65,7 +64,6 @@ export default async function Page({params}: {params: {lang: string; userId: str
     <>
       <Form
         languageData={languageData}
-        organizationList={organizationResponse.data.items || []}
         roleList={allRoles}
         userDetailsData={userDetailsResponse.data}
         userRoles={userRolesResponse.data.items || []}

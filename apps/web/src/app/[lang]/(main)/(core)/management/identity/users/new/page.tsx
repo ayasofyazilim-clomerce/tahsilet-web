@@ -1,10 +1,10 @@
 "use server";
 
-import {isUnauthorized} from "@repo/utils/policies";
-import {isErrorOnRequest, structuredError} from "@repo/utils/api";
+import {getAllRolesApi} from "@repo/actions/core/IdentityService/actions";
 import ErrorComponent from "@repo/ui/components/error-component";
-import {getAllRolesApi, getUsersAvailableOrganizationUnitsApi} from "@repo/actions/core/IdentityService/actions";
+import {structuredError} from "@repo/utils/api";
 import {auth} from "@repo/utils/auth/next-auth";
+import {isUnauthorized} from "@repo/utils/policies";
 import {isRedirectError} from "next/dist/client/components/redirect";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import Form from "./_components/form";
@@ -42,7 +42,7 @@ export default async function Page({params}: {params: {lang: string}}) {
 
   return (
     <>
-      <Form languageData={languageData} organizationList={organizationResponse.data.items || []} roleList={allRoles} />
+      <Form languageData={languageData} roleList={allRoles} />
       <div className="hidden" id="page-description">
         {languageData["User.Create.Description"]}
       </div>

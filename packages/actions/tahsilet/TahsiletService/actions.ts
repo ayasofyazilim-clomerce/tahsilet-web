@@ -8,7 +8,8 @@ import type {
   GetApiTransactionData,
   GetApiTransactionListWithPayRecsData,
 } from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import {structuredError, structuredResponse} from "@repo/utils/api";
+import {structuredError, structuredResponse, structuredSuccessResponse} from "@repo/utils/api";
+import {Session} from "@repo/utils/auth";
 import {getTahsiletServiceClient} from "../lib";
 
 export async function getPermissionsApi(data: GetApiPermissionManagementPermissionsData) {
@@ -137,5 +138,17 @@ export async function getTransactionListWithPayRecsApi(data: GetApiTransactionLi
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);
+  }
+}
+
+export async function getTransactionScorePrediction(id: string, session?: Session | null) {
+  try {
+    const client = await getTahsiletServiceClient(session);
+    const dataResponse = await client.transaction.getApiAppTransactionScorePrediction({cardRef: id});
+    console.error(dataResponse);
+    return structuredSuccessResponse(dataResponse);
+  } catch (error) {
+    console.log(error);
+    throw structuredError(error);
   }
 }
