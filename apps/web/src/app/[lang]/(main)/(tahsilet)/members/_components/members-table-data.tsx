@@ -1,11 +1,9 @@
-import type {
-  TahsilEt_Members_ListMemberResponseDto,
-  TahsilEt_Transactions_ExecutePaymentDto,
-} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import {
-  $TahsilEt_Members_ListMemberResponseDto,
-  $TahsilEt_Transactions_ExecutePaymentDto,
-} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {toast} from "@/components/ui/sonner";
+import type {TahsilEt_Members_ListMemberResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {$TahsilEt_Members_ListMemberResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {triggerTahsiletNotification} from "@repo/actions/tahsilet/Novu/actions";
+import {deleteMemberByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
+import {postTransactionClosePaymentsFifoApi} from "@repo/actions/tahsilet/TahsiletService/post-actions";
 import type {
   TanstackTableColumnLink,
   TanstackTableCreationProps,
@@ -13,20 +11,11 @@ import type {
   TanstackTableTableActionsType,
 } from "@repo/ayasofyazilim-ui/molecules/tanstack-table/types";
 import {tanstackTableCreateColumnsByRowData} from "@repo/ayasofyazilim-ui/molecules/tanstack-table/utils";
-import {SchemaForm} from "@repo/ayasofyazilim-ui/organisms/schema-form";
-import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schema-form/utils";
 import {handlePostResponse, handlePutResponse} from "@repo/utils/api";
 import type {Policy} from "@repo/utils/policies";
 import {isActionGranted} from "@repo/utils/policies";
 import {Bell, LucidePanelTopClose, Plus, Trash2} from "lucide-react";
 import type {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
-import {deleteMemberByIdApi} from "@repo/actions/tahsilet/TahsiletService/delete-actions";
-import {triggerTahsiletNotification} from "@repo/actions/tahsilet/Novu/actions";
-import {
-  postTransactionClosePaymentsFifoApi,
-  postTransactionExecutePaymentApi,
-} from "@repo/actions/tahsilet/TahsiletService/post-actions";
-import {toast} from "@/components/ui/sonner";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 type MembersTable = TanstackTableCreationProps<TahsilEt_Members_ListMemberResponseDto>;
@@ -58,42 +47,6 @@ function membersRowActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableRowActionsType<TahsilEt_Members_ListMemberResponseDto>[] = [
-    {
-      type: "custom-dialog",
-      actionLocation: "row",
-      cta: languageData["Payment.New"],
-      title: languageData["Payment.New"],
-      icon: Plus,
-      condition: () => isActionGranted(["TahsilEt.Transactions.Update"], grantedPolicies),
-      content: (row) => (
-        <SchemaForm<TahsilEt_Transactions_ExecutePaymentDto>
-          className="flex flex-col gap-4"
-          filter={{
-            type: "include",
-            sort: true,
-            keys: ["amount"],
-          }}
-          onSubmit={({formData}) => {
-            if (!formData) return;
-            void postTransactionExecutePaymentApi({
-              requestBody: {
-                ...formData,
-                memberId: row.id || "",
-              },
-            }).then((res) => {
-              handlePostResponse(res, router);
-            });
-          }}
-          schema={$TahsilEt_Transactions_ExecutePaymentDto}
-          submitText={languageData.Save}
-          uiSchema={createUiSchemaWithResource({
-            schema: $TahsilEt_Transactions_ExecutePaymentDto,
-            resources: languageData,
-            name: "Form.Transaction",
-          })}
-        />
-      ),
-    },
     {
       type: "confirmation-dialog",
       cta: languageData["Transaction.Close"],

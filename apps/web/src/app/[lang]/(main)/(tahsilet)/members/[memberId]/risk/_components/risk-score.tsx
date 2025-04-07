@@ -5,36 +5,36 @@ import {cn} from "@/lib/utils";
 export default function RiskScore({score}: {score: number}) {
   const minScore = 1;
   const maxScore = 1900;
-  const rangeStep = Math.floor((maxScore - minScore) / 5);
+  // const rangeStep = Math.floor((maxScore - minScore) / 5);
   const areas = [
     {
       label: "EN RİSKLİ",
       colors: {text: "text-credit-red", bg: "bg-credit-red"},
-      range: [minScore, minScore + rangeStep - 1],
+      range: [0, 699],
       start: "col-start-1",
     },
     {
       label: "ORTA RİSKLİ",
       colors: {text: "text-credit-orange", bg: "bg-credit-orange"},
-      range: [minScore + rangeStep, minScore + 2 * rangeStep - 1],
+      range: [700, 1099],
       start: "col-start-2",
     },
     {
       label: "AZ RİSKLİ",
       colors: {text: "text-credit-yellow", bg: "bg-credit-yellow"},
-      range: [minScore + 2 * rangeStep, minScore + 3 * rangeStep - 1],
+      range: [1100, 1499],
       start: "col-start-3",
     },
     {
       label: "İYİ",
       colors: {text: "text-credit-teal", bg: "bg-credit-teal"},
-      range: [minScore + 3 * rangeStep, minScore + 4 * rangeStep - 1],
+      range: [1500, 1699],
       start: "col-start-4",
     },
     {
       label: "ÇOK RİSKLİ",
       colors: {text: "text-credit-green", bg: "bg-credit-green"},
-      range: [minScore + 4 * rangeStep, maxScore],
+      range: [1700, 1900],
       start: "col-start-5",
     },
   ];

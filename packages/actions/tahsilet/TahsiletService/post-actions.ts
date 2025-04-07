@@ -8,7 +8,6 @@ import type {
   PostApiMultiTenancyTenantsData,
   PostApiTransactionClosePaymentsFifoData,
   PostApiTransactionData,
-  PostApiTransactionExecutePaymentData,
 } from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {structuredError, structuredResponse} from "@repo/utils/api";
 import {getTahsiletServiceClient} from "../lib";
@@ -67,16 +66,6 @@ export async function postTransactionApi(data: PostApiTransactionData) {
   try {
     const client = await getTahsiletServiceClient();
     const dataResponse = await client.transaction.postApiTransaction(data);
-    return structuredResponse(dataResponse);
-  } catch (error) {
-    return structuredError(error);
-  }
-}
-
-export async function postTransactionExecutePaymentApi(data: PostApiTransactionExecutePaymentData) {
-  try {
-    const client = await getTahsiletServiceClient();
-    const dataResponse = await client.transaction.postApiTransactionExecutePayment(data);
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);
