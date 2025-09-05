@@ -29,7 +29,6 @@ export default function Form({
 }) {
   const router = useRouter();
   const [terminals, setTerminals] = useState<PosTerminal[]>([]);
-  const [paymentReceived, setPaymentReceived] = useState<boolean>(false);
   const [activeTerminal, setActiveTerminal] = useState<PosTerminal | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [disabledMessage, setDisabledMessage] = useState<string>("");
@@ -75,126 +74,141 @@ export default function Form({
         }
       });
   }, [formData]);
+
+  function handleSave() {
+    void postTransactionApi({
+      requestBody: {
+        ...formData,
+        memberId,
+      },
+    }).then((res) => {
+      handlePostResponse(res, router, "../transactions");
+    });
+  }
+
   return (
-    <SchemaForm<TahsilEt_Transactions_CreateTransactionDto>
-      className="flex flex-col gap-4"
-      disabled={isPending}
-      filter={{
-        type: "include",
-        sort: true,
-        keys: ["transactionType", "transactionDate", "debit", "credit", "documentType"],
-      }}
-      formData={formData}
-      onChange={({formData: editedFormData}) => {
-        if (!editedFormData) return;
-        setFormData(editedFormData);
-      }}
-      onSubmit={({formData: submitFormData}) => {
-        startTransition(() => {
+    <div className="grid items-center gap-4">
+      <SchemaForm<TahsilEt_Transactions_CreateTransactionDto>
+        className="flex flex-col gap-4"
+        disabled={isPending}
+        filter={{
+          type: "include",
+          sort: true,
+          keys: ["transactionType", "transactionDate", "debit", "credit", "documentType"],
+        }}
+        formData={formData}
+        onChange={({formData: editedFormData}) => {
+          if (!editedFormData) return;
+          setFormData(editedFormData);
+        }}
+        onSubmit={({formData: submitFormData}) => {
           if (!submitFormData) return;
-          void postTransactionApi({
-            requestBody: {
-              ...submitFormData,
-              memberId,
-            },
-          }).then((res) => {
-            handlePostResponse(res, router, "../transactions");
-          });
-        });
-      }}
-      schema={$TahsilEt_Transactions_CreateTransactionDto}
-      useDefaultSubmit={false}
-      uiSchema={uiSchema}
-      // useDependency
-    >
-      {terminals.length > 0 && (
-        <PosTerminalSelector
-          disabled={isPending}
-          disabledMessage={disabledMessage}
-          onSelect={(terminal) => {
-            setActiveTerminal(terminal); // Set immediately to show selection
-            setDisabledMessage(`Connecting to ${terminal.name}...`);
-            startTransition(async () => {
-              try {
-                setErrorMessage(null);
-
-                const TransactionHandle = {
-                  Fingerprint: terminal.sourceFingerPrint,
-                  SerialNumber: terminal.sourceFingerPrint,
-                  TransactionSequence: null,
-                };
-
-                // Ping phase
-                const pingResponse = await ping({
-                  Url: terminal.httpsUrl,
-                  TransactionHandle: {
-                    ...TransactionHandle,
-                    TransactionDate: new Date().toISOString(),
-                  },
-                });
-
-                if (pingResponse.HasError || pingResponse.HasAbondon) {
-                  setActiveTerminal(null); // Clear selection on error
-                  setErrorMessage(pingResponse.Message || "Failed to connect to terminal");
-                  return;
-                }
-
-                // Payment phase
-                setDisabledMessage(`Processing payment on ${terminal.name}...`);
-
-                const paymentResponse = await startPayment({
-                  Url: terminal.httpsUrl,
-                  Payment: {
-                    Amount: formData.credit || 0,
-                    installmentCount: 1,
-                    minInstallmentCount: 1,
-                    maxInstallmentCount: 1,
-                    IsPfInstallmentEnabled: false,
-                    CurrencyCode: "TRY",
-                    AdditionalInfo: {
-                      print: true,
-                      receiptImage: true,
-                      customerReceiptImageEnabled: true,
-                      merchantReceiptImageEnabled: false,
-                      receiptWidth: "58mm",
-                      headUnmaskLength: 4,
-                      tailUnmaskLength: 4,
-                    },
-                  },
-                  TransactionHandle: {
-                    ...TransactionHandle,
-                    TransactionSequence: pingResponse.TransactionHandle.TransactionSequence,
-                    TransactionDate: new Date().toISOString(),
-                  },
-                });
-
-                if (paymentResponse.HasError || paymentResponse.HasAbondon) {
-                  setActiveTerminal(null); // Clear selection on error
-                  setErrorMessage(paymentResponse.Message || "Failed to process payment");
-                } else {
-                  // Success - clear selection and show success state
-                  setActiveTerminal(null);
+          setFormData(submitFormData);
+        }}
+        schema={$TahsilEt_Transactions_CreateTransactionDto}
+        useDefaultSubmit={false}
+        withScrollArea={false}
+        uiSchema={uiSchema}
+        // useDependency
+      >
+        {terminals.length > 0 && (
+          <PosTerminalSelector
+            disabled={isPending}
+            disabledMessage={disabledMessage}
+            onSelect={(terminal) => {
+              setActiveTerminal(terminal); // Set immediately to show selection
+              setDisabledMessage(`Connecting to ${terminal.name}...`);
+              startTransition(async () => {
+                try {
                   setErrorMessage(null);
-                  setPaymentReceived(true);
+
+                  const TransactionHandle = {
+                    Fingerprint: terminal.sourceFingerPrint,
+                    SerialNumber: terminal.sourceFingerPrint,
+                    TransactionSequence: null,
+                  };
+
+                  // Ping phase
+                  const pingResponse = await ping({
+                    Url: terminal.httpsUrl,
+                    TransactionHandle: {
+                      ...TransactionHandle,
+                      TransactionDate: new Date().toISOString(),
+                    },
+                  });
+
+                  if (pingResponse.HasError || pingResponse.HasAbondon) {
+                    setActiveTerminal(null); // Clear selection on error
+                    setErrorMessage(pingResponse.Message || "Failed to connect to terminal");
+                    return;
+                  }
+
+                  // Payment phase
+                  setDisabledMessage(`Processing payment on ${terminal.name}...`);
+
+                  const paymentResponse = await startPayment({
+                    Url: terminal.httpsUrl,
+                    Payment: {
+                      Amount: formData.credit || 0,
+                      installmentCount: 1,
+                      minInstallmentCount: 1,
+                      maxInstallmentCount: 1,
+                      IsPfInstallmentEnabled: false,
+                      CurrencyCode: "TRY",
+                      AdditionalInfo: {
+                        print: true,
+                        receiptImage: true,
+                        customerReceiptImageEnabled: true,
+                        merchantReceiptImageEnabled: false,
+                        receiptWidth: "58mm",
+                        headUnmaskLength: 4,
+                        tailUnmaskLength: 4,
+                      },
+                    },
+                    TransactionHandle: {
+                      ...TransactionHandle,
+                      TransactionSequence: pingResponse.TransactionHandle.TransactionSequence,
+                      TransactionDate: new Date().toISOString(),
+                    },
+                  });
+
+                  if (paymentResponse.HasError || paymentResponse.HasAbondon) {
+                    setActiveTerminal(null); // Clear selection on error
+                    setErrorMessage(paymentResponse.Message || "Failed to process payment");
+                  } else {
+                    // Success - clear selection and show success state
+                    setActiveTerminal(null);
+                    setErrorMessage(null);
+                    handleSave();
+                  }
+                } catch (error) {
+                  setActiveTerminal(null);
+                  setErrorMessage("An unexpected error occurred");
                 }
-              } catch (error) {
-                setActiveTerminal(null);
-                setErrorMessage("An unexpected error occurred");
-              }
+              });
+            }}
+            selectedTerminalId={activeTerminal?.id || null}
+            terminals={terminals}
+          />
+        )}
+        {errorMessage ? (
+          <div className="text-sm text-rose-500">
+            <span>{errorMessage}</span>
+          </div>
+        ) : null}
+      </SchemaForm>
+      {formData.documentType !== "CreditCard" && (
+        <Button
+          disabled={isPending}
+          onClick={() => {
+            startTransition(() => {
+              handleSave();
             });
           }}
-          selectedTerminalId={activeTerminal?.id || null}
-          terminals={terminals}
-        />
+          type="button">
+          {languageData.Save}
+        </Button>
       )}
-      {errorMessage ? (
-        <div className="text-small-regular pt-2 text-rose-500">
-          <span>{errorMessage}</span>
-        </div>
-      ) : null}
-      <Button disabled={formData.documentType === "CreditCard" ? isPending || !paymentReceived : isPending}>
-        {languageData.Save}
-      </Button>
-    </SchemaForm>
+    </div>
   );
 }

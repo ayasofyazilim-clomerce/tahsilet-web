@@ -27,7 +27,7 @@ function transactionsTableActions(
   grantedPolicies: Record<Policy, boolean>,
   memberId: string,
 ) {
-  const actions: TanstackTableTableActionsType[] = [];
+  const actions: TanstackTableTableActionsType<TahsilEt_Transactions_ListTransactionResponseDto>[] = [];
   if (isActionGranted(["TahsilEt.Transactions.Create"], grantedPolicies)) {
     actions.push({
       type: "simple",

@@ -71,6 +71,7 @@ export default function RiskScore({
                 startTransition(() => {
                   void triggerTahsiletSendScore({
                     score,
+                    memberName: `${memberDetails.name} ${memberDetails.surname}`,
                     subscriberId: memberDetails.id,
                     email: memberDetails.mail || "",
                     phone: memberDetails.tel || "",
