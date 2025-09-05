@@ -41,10 +41,10 @@ importers:
         version: 0.30.0
       '@ayasofyazilim/core-saas':
         specifier: latest
-        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
+        version: 0.0.4
       '@ayasofyazilim/tahsilet-saas':
         specifier: ^0.0.4
-        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
+        version: 0.0.4
       '@radix-ui/react-icons':
         specifier: ^1.3.0
         version: 1.3.0(react@18.3.1)
@@ -54,6 +54,9 @@ importers:
       '@repo/ayasofyazilim-ui':
         specifier: workspace:^
         version: link:../../packages/ayasofyazilim-ui
+      '@repo/saas':
+        specifier: workspace:*
+        version: link:../../packages/saas
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -153,13 +156,16 @@ importers:
         version: 0.30.0
       '@ayasofyazilim/core-saas':
         specifier: latest
-        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
+        version: 0.0.4
       '@ayasofyazilim/tahsilet-saas':
         specifier: latest
-        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
+        version: 0.0.4
       '@novu/api':
         specifier: latest
         version: 0.6.2(zod@3.24.2)
+      '@repo/saas':
+        specifier: workspace:*
+        version: link:../saas
       '@repo/utils':
         specifier: workspace:*
         version: link:../utils
@@ -732,11 +738,20 @@ importers:
 
   packages/config-typescript: {}
 
+  packages/saas:
+    dependencies:
+      '@ayasofyazilim/sdk_generator':
+        specifier: latest
+        version: 0.0.13(magicast@0.3.5)(openapi-types@12.1.3)
+      commander:
+        specifier: ^13.0.0
+        version: 13.0.0
+
   packages/ui:
     dependencies:
       '@ayasofyazilim/core-saas':
         specifier: latest
-        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
+        version: 0.0.4
       '@dnd-kit/core':
         specifier: ^6.1.0
         version: 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -827,7 +842,7 @@ importers:
         version: 0.30.0
       '@ayasofyazilim/core-saas':
         specifier: latest
-        version: 0.0.4(magicast@0.3.5)(openapi-types@12.1.3)
+        version: 0.0.4
       '@formatjs/intl-localematcher':
         specifier: ^0.5.4
         version: 0.5.10
@@ -4363,6 +4378,7 @@ packages:
 
   '@tiptap-pro/extension-node-range@2.11.2':
     resolution: {integrity: sha512-fEhe/QlJj4b+EzhNUEEQHVO5kzmN5P8JrxmUMCXE5JEma6nineyFbxFSjPlTr2IewWvpkuJPJdxc+p1bXM8+vg==}
+    deprecated: '"@tiptap-pro/extension-node-range" was made open source and can now be installed from "@tiptap/extension-node-range" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
@@ -10650,7 +10666,7 @@ snapshots:
       preact: 10.11.3
       preact-render-to-string: 5.2.3(preact@10.11.3)
 
-  '@ayasofyazilim/core-saas@0.0.4(magicast@0.3.5)(openapi-types@12.1.3)':
+  '@ayasofyazilim/core-saas@0.0.4':
     dependencies:
       '@ayasofyazilim/sdk_generator': 0.0.13(magicast@0.3.5)(openapi-types@12.1.3)
       commander: 13.0.0
@@ -10668,7 +10684,7 @@ snapshots:
       - magicast
       - openapi-types
 
-  '@ayasofyazilim/tahsilet-saas@0.0.4(magicast@0.3.5)(openapi-types@12.1.3)':
+  '@ayasofyazilim/tahsilet-saas@0.0.4':
     dependencies:
       '@ayasofyazilim/sdk_generator': 0.0.13(magicast@0.3.5)(openapi-types@12.1.3)
       commander: 13.0.0

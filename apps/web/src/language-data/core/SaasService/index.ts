@@ -1,5 +1,4 @@
 import {getLocalizationResources} from "src/utils";
-import type {SaasServiceResources} from "@/language-data/resources";
 import defaultEn from "../Default/resources/en.json";
 import defaultTr from "../Default/resources/tr.json";
 import en from "./resources/en.json";
@@ -24,7 +23,7 @@ export async function getResourceData(lang: string) {
   return {
     languageData: {
       ...languageData,
-      ...(resources.SaasService?.texts as unknown as SaasServiceResources),
+      ...resources.SaasService?.texts,
     },
   };
 }

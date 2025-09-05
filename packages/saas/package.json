@@ -1,0 +1,16 @@
+{
+  "name": "@repo/saas",
+  "version": "0.0.0",
+  "exports": {
+    "./*": "./*/index.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "gen": "node index.mjs",
+    "gen:dev": "pnpm gen -u \"https://tahsilet.faturaturka.com\""
+  },
+  "dependencies": {
+    "@ayasofyazilim/sdk_generator": "latest",
+    "commander": "^13.0.0"
+  }
+}

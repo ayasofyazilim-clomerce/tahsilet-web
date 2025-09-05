@@ -35,7 +35,7 @@ export default async function Page({
   const {lang} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["AuditLogging.AuditLogs"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
 

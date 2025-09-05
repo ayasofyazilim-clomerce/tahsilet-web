@@ -25,7 +25,7 @@ function languagesTableActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableTableActionsType[] = [];
-  if (isActionGranted(["LanguageManagement.Languages.Create"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "simple",
       actionLocation: "table",
@@ -44,7 +44,7 @@ function languagesRowActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableRowActionsType<Volo_Abp_LanguageManagement_Dto_LanguageDto>[] = [];
-  if (isActionGranted(["LanguageManagement.Languages.ChangeDefault"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "confirmation-dialog",
       cta: languageData["Language.Default.Language"],
@@ -68,7 +68,7 @@ const languagesColumns = (
   languageData: AdministrationServiceResource,
   grantedPolicies: Record<Policy, boolean>,
 ) => {
-  if (isActionGranted(["LanguageManagement.Languages.Edit"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     links.displayName = {
       prefix: "languages",
       targetAccessorKey: "id",

@@ -1,7 +1,7 @@
 "use server";
-import {TAHSILETServiceClient} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import type {Session} from "@repo/utils/auth";
-import {auth} from "@repo/utils/auth/next-auth";
+import { TAHSILETServiceClient } from "@repo/saas/TAHSILETService";
+import type { Session } from "@repo/utils/auth";
+import { auth } from "@repo/utils/auth/next-auth";
 
 const HEADERS = {
   "X-Requested-With": "XMLHttpRequest",

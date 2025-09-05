@@ -29,7 +29,7 @@ function languageTextsRowActions(
   router: AppRouterInstance,
 ) {
   const actions: TanstackTableRowActionsType<Volo_Abp_LanguageManagement_Dto_LanguageTextDto>[] = [];
-  if (isActionGranted(["LanguageManagement.LanguageTexts.Edit"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "custom-dialog",
       cta: languageData["LanguageText.Edit.Value"],
@@ -39,7 +39,7 @@ function languageTextsRowActions(
       content: (row) => <LanguageTextsEdit languageData={languageData} languageTextData={row} />,
     });
   }
-  if (isActionGranted(["LanguageManagement.LanguageTexts.Edit"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "confirmation-dialog",
       cta: languageData["LanguageText.Restore.Value"],

@@ -34,7 +34,7 @@ export default function Form({
   return (
     <div className="flex flex-col gap-4 overflow-auto">
       <ActionList>
-        {isActionGranted(["OpenIddictPro.Scope.Delete"], grantedPolicies) && (
+        {isActionGranted(["AbpIdentity.Roles"], grantedPolicies) && (
           <ConfirmDialog
             closeProps={{
               children: languageData.Cancel,

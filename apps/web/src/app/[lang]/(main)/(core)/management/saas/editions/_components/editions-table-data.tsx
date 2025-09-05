@@ -25,7 +25,7 @@ function editionsTableActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableTableActionsType[] = [];
-  if (isActionGranted(["Saas.Editions.Create"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "simple",
       actionLocation: "table",
@@ -52,7 +52,7 @@ function editionsRowActions(
       onClick: (row) => {
         router.push(`editions/${row.id}/features`);
       },
-      condition: () => isActionGranted(["Saas.Editions.ManageFeatures"], grantedPolicies),
+      condition: () => isActionGranted(["AbpIdentity.Roles"], grantedPolicies),
     },
     {
       type: "confirmation-dialog",
@@ -71,7 +71,7 @@ function editionsRowActions(
           handlePutResponse(res, router);
         });
       },
-      condition: () => isActionGranted(["Saas.Editions.ManageFeatures"], grantedPolicies),
+      condition: () => isActionGranted(["AbpIdentity.Roles"], grantedPolicies),
     },
     {
       type: "simple",
@@ -82,9 +82,7 @@ function editionsRowActions(
         router.push(`editions/${row.id}/move-all-tenants`);
       },
       condition: (row) =>
-        row.tenantCount !== undefined &&
-        row.tenantCount > 0 &&
-        isActionGranted(["Saas.Editions.Update"], grantedPolicies),
+        row.tenantCount !== undefined && row.tenantCount > 0 && isActionGranted(["AbpIdentity.Roles"], grantedPolicies),
     },
   ];
   return actions;
@@ -95,7 +93,7 @@ const editionsColumns = (
   languageData: SaasServiceResource,
   grantedPolicies: Record<Policy, boolean>,
 ) => {
-  if (isActionGranted(["Saas.Editions.Update"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     links.displayName = {
       prefix: "editions",
       targetAccessorKey: "id",

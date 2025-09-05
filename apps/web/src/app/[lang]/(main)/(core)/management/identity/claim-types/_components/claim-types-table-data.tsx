@@ -22,7 +22,7 @@ function claimTypesTableActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableTableActionsType[] = [];
-  if (isActionGranted(["AbpIdentity.ClaimTypes.Create"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "simple",
       actionLocation: "table",
@@ -40,7 +40,7 @@ const claimTypesColumns = (
   languageData: IdentityServiceResource,
   grantedPolicies: Record<Policy, boolean>,
 ) => {
-  if (isActionGranted(["AbpIdentity.ClaimTypes.Update"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     links.name = {
       prefix: "claim-types",
       targetAccessorKey: "id",

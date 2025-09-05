@@ -1,8 +1,8 @@
 "use server";
 
-import type {DeleteApiMemberByIdData} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import {structuredError, structuredResponse} from "@repo/utils/api";
-import {getTahsiletServiceClient} from "../lib";
+import type { DeleteApiMemberByIdData } from "@repo/saas/TAHSILETService";
+import { structuredError, structuredResponse } from "@repo/utils/api";
+import { getTahsiletServiceClient } from "../lib";
 
 export async function deleteRoleByIdApi(id: string) {
   try {

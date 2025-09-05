@@ -7,10 +7,10 @@ import type {
   GetApiPermissionManagementPermissionsData,
   GetApiTransactionData,
   GetApiTransactionListWithPayRecsData,
-} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import {structuredError, structuredResponse, structuredSuccessResponse} from "@repo/utils/api";
-import {Session} from "@repo/utils/auth";
-import {getTahsiletServiceClient} from "../lib";
+} from "@repo/saas/TAHSILETService";
+import { structuredError, structuredResponse, structuredSuccessResponse } from "@repo/utils/api";
+import { Session } from "@repo/utils/auth";
+import { getTahsiletServiceClient } from "../lib";
 
 export async function getPermissionsApi(data: GetApiPermissionManagementPermissionsData) {
   try {
@@ -45,7 +45,7 @@ export async function getRolesApi(data: GetApiIdentityRolesData = {}) {
 export async function getRoleDetailsByIdApi(id: string) {
   try {
     const client = await getTahsiletServiceClient();
-    const dataResponse = await client.role.getApiIdentityRolesById({id});
+    const dataResponse = await client.role.getApiIdentityRolesById({ id });
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);
@@ -65,7 +65,7 @@ export async function getUsersApi(data: GetApiIdentityUsersData) {
 export async function getUserDetailsByIdApi(id: string) {
   try {
     const client = await getTahsiletServiceClient();
-    const dataResponse = await client.user.getApiIdentityUsersById({id});
+    const dataResponse = await client.user.getApiIdentityUsersById({ id });
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);
@@ -75,7 +75,7 @@ export async function getUserDetailsByIdApi(id: string) {
 export async function getUsersAssignableRolesApi(id: string) {
   try {
     const client = await getTahsiletServiceClient();
-    const dataResponse = await client.user.getApiIdentityUsersByIdRoles({id});
+    const dataResponse = await client.user.getApiIdentityUsersByIdRoles({ id });
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);
@@ -95,7 +95,7 @@ export async function getTenantsApi(data: GetApiMultiTenancyTenantsData) {
 export async function getTenantDetailsByIdApi(id: string) {
   try {
     const client = await getTahsiletServiceClient();
-    const dataResponse = await client.tenant.getApiMultiTenancyTenantsById({id});
+    const dataResponse = await client.tenant.getApiMultiTenancyTenantsById({ id });
     return structuredResponse(dataResponse);
   } catch (error) {
     return structuredError(error);
@@ -144,7 +144,7 @@ export async function getTransactionListWithPayRecsApi(data: GetApiTransactionLi
 export async function getTransactionScorePrediction(id: string, session?: Session | null) {
   try {
     const client = await getTahsiletServiceClient(session);
-    const dataResponse = await client.transaction.getApiAppTransactionScorePrediction({cardRef: id});
+    const dataResponse = await client.transaction.getApiAppTransactionScorePrediction({ cardRef: id });
     return structuredSuccessResponse(dataResponse);
   } catch (error) {
     throw structuredError(error);

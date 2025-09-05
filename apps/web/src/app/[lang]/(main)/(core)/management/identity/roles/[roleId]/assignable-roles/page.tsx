@@ -11,7 +11,7 @@ export default async function Page({params}: {params: {lang: string; roleId: str
   const {lang, roleId} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["IdentityService.AssignableRoles"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
 

@@ -18,7 +18,7 @@ export default async function Page({
   const {lang} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["OpenIddictPro.Scope"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
 
