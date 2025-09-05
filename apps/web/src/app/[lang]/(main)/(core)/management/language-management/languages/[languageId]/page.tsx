@@ -11,7 +11,7 @@ export default async function Page({params}: {params: {lang: string; languageId:
   const {lang, languageId} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["LanguageManagement.Languages.Edit"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
   const languageDetailsResponse = await getLanguageDetailsByIdApi(languageId);

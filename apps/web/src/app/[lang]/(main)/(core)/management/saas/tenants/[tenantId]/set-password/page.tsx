@@ -11,7 +11,7 @@ export default async function Page({params}: {params: {lang: string; tenantId: s
   const {lang, tenantId} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["Saas.Tenants.SetPassword"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
 

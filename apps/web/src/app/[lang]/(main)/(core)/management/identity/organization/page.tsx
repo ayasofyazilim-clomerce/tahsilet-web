@@ -20,7 +20,7 @@ export default async function Page({
   const {lang} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["AbpIdentity.OrganizationUnits"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
   const organizationResponse = await getAllOrganizationUnitsApi();

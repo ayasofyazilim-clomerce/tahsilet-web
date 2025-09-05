@@ -16,7 +16,7 @@ export default async function Page({
 }) {
   const {lang} = params;
   await isUnauthorized({
-    requiredPolicies: ["OpenIddictPro.Application"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
   const applicationsResponse = await getApplicationsApi(searchParams);

@@ -22,7 +22,7 @@ function scopesTableActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableTableActionsType[] = [];
-  if (isActionGranted(["OpenIddictPro.Scope.Create"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "simple",
       actionLocation: "table",
@@ -41,7 +41,7 @@ const scopesColumns = (
   languageData: IdentityServiceResource,
   grantedPolicies: Record<Policy, boolean>,
 ) => {
-  if (isActionGranted(["OpenIddictPro.Scope.Update"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     links.name = {
       prefix: "scopes",
       targetAccessorKey: "id",

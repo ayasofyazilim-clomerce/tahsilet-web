@@ -7,9 +7,9 @@ import type {
   PutApiMultiTenancyTenantsByIdData,
   PutApiPermissionManagementPermissionsData,
   PutApiTransactionByIdData,
-} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
-import {structuredError, structuredResponse} from "@repo/utils/api";
-import {getTahsiletServiceClient} from "../lib";
+} from "@repo/saas/TAHSILETService";
+import { structuredError, structuredResponse } from "@repo/utils/api";
+import { getTahsiletServiceClient } from "../lib";
 
 export async function putPermissionsApi(data: PutApiPermissionManagementPermissionsData) {
   try {

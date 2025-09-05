@@ -23,7 +23,7 @@ function applicationsTableActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableTableActionsType[] = [];
-  if (isActionGranted(["OpenIddictPro.Application.Create"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "simple",
       actionLocation: "table",
@@ -43,7 +43,7 @@ function tenantsRowActions(
   grantedPolicies: Record<Policy, boolean>,
 ) {
   const actions: TanstackTableRowActionsType<Volo_Abp_OpenIddict_Applications_Dtos_ApplicationDto>[] = [];
-  if (isActionGranted(["OpenIddictPro.Application.ManagePermissions"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "simple",
       actionLocation: "row",
@@ -54,7 +54,7 @@ function tenantsRowActions(
       },
     });
   }
-  if (isActionGranted(["OpenIddictPro.Application.Update"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     actions.push({
       type: "simple",
       actionLocation: "row",
@@ -73,7 +73,7 @@ const applicationsColumns = (
   languageData: IdentityServiceResource,
   grantedPolicies: Record<Policy, boolean>,
 ) => {
-  if (isActionGranted(["OpenIddictPro.Application.Update"], grantedPolicies)) {
+  if (isActionGranted(["AbpIdentity.Roles"], grantedPolicies)) {
     links.displayName = {
       prefix: "applications",
       targetAccessorKey: "id",

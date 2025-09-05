@@ -12,7 +12,7 @@ export default async function Page({params}: {params: {lang: string; editionId: 
   const {lang, editionId} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["Saas.Editions.ManageFeatures"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
 

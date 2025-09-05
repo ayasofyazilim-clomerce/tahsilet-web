@@ -11,7 +11,7 @@ export default async function Page({params}: {params: {lang: string; claimTypeId
   const {lang, claimTypeId} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["AbpIdentity.ClaimTypes.Update"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
 

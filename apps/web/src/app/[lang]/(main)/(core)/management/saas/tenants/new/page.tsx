@@ -8,7 +8,7 @@ export default async function Page({params}: {params: {lang: string}}) {
   const {lang} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["AbpTenantManagement.Tenants.Create"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
 

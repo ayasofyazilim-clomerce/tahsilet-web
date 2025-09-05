@@ -22,7 +22,7 @@ export default async function Page({
   const {lang} = params;
   const {languageData} = await getResourceData(lang);
   await isUnauthorized({
-    requiredPolicies: ["LanguageManagement.LanguageTexts"],
+    requiredPolicies: ["AbpIdentity.Roles"],
     lang,
   });
   const languageTextsResponse = await getLanguageTextsApi({

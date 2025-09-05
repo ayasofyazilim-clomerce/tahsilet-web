@@ -15,6 +15,7 @@
     "@ayasofyazilim/core-saas": "latest",
     "@ayasofyazilim/tahsilet-saas": "latest",
     "@repo/utils": "workspace:*",
+    "@repo/saas": "workspace:*",
     "@types/react": "18.3.18",
     "@types/react-dom": "18.3.5",
     "next": "14.2.20",
