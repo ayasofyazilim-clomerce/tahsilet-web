@@ -352,7 +352,7 @@ export function TransactionForm({memberId, imToken, cmToken}: {memberId: string;
             ) : null}
           </div>
         )}
-        {documentType !== "CreditCard" && transactionType !== "Credit" && (
+        {documentType !== "CreditCard" && (
           <Button disabled={isPending} type="submit">
             Submit Transaction
           </Button>
