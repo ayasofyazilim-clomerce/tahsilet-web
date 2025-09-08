@@ -22,33 +22,15 @@ import * as z from "zod";
 import PosTerminalSelector from "@/app/[lang]/(main)/(tahsilet)/members/_components/terminal-selector";
 
 // Zod schema based on your DTO
-const transactionFormSchema = z
-  .object({
-    memberId: z.string().uuid("Invalid UUID format"),
-    transactionType: z.enum(["Credit", "Debit"]),
-    transactionDate: z.date({
-      required_error: "Transaction date is required",
-    }),
-    debit: z.number().nullable().optional(),
-    credit: z.number().nullable().optional(),
-    documentType: z.enum(["Invoice", "Check", "PromissoryNote", "CreditCard", "Cash"]).optional(),
-  })
-  .refine(
-    (data) => {
-      // Conditional validation: Credit type requires credit field, Debit type requires debit field
-      if (data.transactionType === "Credit" && (!data.credit || data.credit <= 0)) {
-        return false;
-      }
-      if (data.transactionType === "Debit" && (!data.debit || data.debit <= 0)) {
-        return false;
-      }
-      return true;
-    },
-    {
-      message: "Credit transactions require a credit amount, Debit transactions require a debit amount",
-      path: ["credit"], // This will show the error on the credit field, you might want to handle this differently
-    },
-  );
+const transactionFormSchema = z.object({
+  memberId: z.string().uuid("Invalid UUID format"),
+  transactionType: z.enum(["Credit", "Debit"]),
+  transactionDate: z.date({
+    required_error: "Transaction date is required",
+  }),
+  amount: z.number(),
+  documentType: z.enum(["Invoice", "Check", "PromissoryNote", "CreditCard", "Cash"]).optional(),
+});
 
 type TransactionFormValues = z.infer<typeof transactionFormSchema>;
 
@@ -63,8 +45,7 @@ export function TransactionForm({memberId, imToken, cmToken}: {memberId: string;
     memberId,
     transactionType: "Credit",
     transactionDate: new Date(),
-    debit: null,
-    credit: null,
+    amount: 0,
   });
   const form = useForm<TransactionFormValues>({
     resolver: zodResolver(transactionFormSchema),
@@ -73,8 +54,7 @@ export function TransactionForm({memberId, imToken, cmToken}: {memberId: string;
 
   const transactionType = form.watch("transactionType");
   const documentType = form.watch("documentType");
-  const creditAmount = form.watch("credit") || 0;
-  const debitAmount = form.watch("debit") || 0;
+  const amount = form.watch("amount") || 0;
 
   function onSubmit(data: TransactionFormValues) {
     startTransition(() => {
@@ -85,6 +65,8 @@ export function TransactionForm({memberId, imToken, cmToken}: {memberId: string;
       void postTransactionApi({
         requestBody: {
           ...submitData,
+          credit: transactionType === "Credit" ? amount : undefined,
+          debit: transactionType === "Debit" ? amount : undefined,
         },
       }).then((res) => {
         handlePostResponse(res, router, "../transactions");
@@ -151,7 +133,7 @@ export function TransactionForm({memberId, imToken, cmToken}: {memberId: string;
         const paymentResponse = await startPayment({
           Url: terminal.httpsUrl,
           Payment: {
-            Amount: transactionType === "Credit" ? creditAmount : debitAmount,
+            Amount: amount,
             installmentCount: 1,
             minInstallmentCount: 1,
             maxInstallmentCount: 1,
@@ -249,59 +231,29 @@ export function TransactionForm({memberId, imToken, cmToken}: {memberId: string;
           )}
         />
 
-        {/* Conditional Credit Field - Show only when transactionType is Credit */}
-        {transactionType === "Credit" && (
-          <FormField
-            control={form.control}
-            disabled={isPending}
-            name="credit"
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>Credit Amount</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter credit amount"
-                    step="0.01"
-                    type="number"
-                    {...field}
-                    onChange={(e) => {
-                      field.onChange(e.target.value ? parseFloat(e.target.value) : null);
-                    }}
-                    value={field.value || ""}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        )}
-
-        {/* Conditional Debit Field - Show only when transactionType is Debit */}
-        {transactionType === "Debit" && (
-          <FormField
-            control={form.control}
-            disabled={isPending}
-            name="debit"
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>Debit Amount</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter debit amount"
-                    step="0.01"
-                    type="number"
-                    {...field}
-                    onChange={(e) => {
-                      field.onChange(e.target.value ? parseFloat(e.target.value) : null);
-                    }}
-                    value={field.value || ""}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        )}
+        <FormField
+          control={form.control}
+          disabled={isPending}
+          name="amount"
+          render={({field}) => (
+            <FormItem>
+              <FormLabel>Amount</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="Enter amount"
+                  step="0.01"
+                  type="number"
+                  {...field}
+                  onChange={(e) => {
+                    field.onChange(e.target.value ? parseFloat(e.target.value) : null);
+                  }}
+                  value={field.value || ""}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}
