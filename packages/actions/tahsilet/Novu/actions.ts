@@ -23,7 +23,7 @@ export async function triggerTahsiletSendScore({
       payload: {
         score: score,
         memberName: memberName,
-        subject: "Score reminder",
+        subject: "Risk skorunuz",
       },
       to: {
         subscriberId: subscriberId,
