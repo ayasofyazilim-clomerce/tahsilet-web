@@ -149,7 +149,7 @@ export default function Form({
                   const paymentResponse = await startPayment({
                     Url: terminal.httpsUrl,
                     Payment: {
-                      Amount: formData.credit || 0,
+                      Amount: (formData.transactionType === "Credit" ? formData.credit : formData.debit) || 0,
                       installmentCount: 1,
                       minInstallmentCount: 1,
                       maxInstallmentCount: 1,
