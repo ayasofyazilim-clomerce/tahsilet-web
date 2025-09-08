@@ -144,7 +144,7 @@ export async function getTransactionListWithPayRecsApi(data: GetApiTransactionLi
 export async function getTransactionScorePrediction(id: string, session?: Session | null) {
   try {
     const client = await getTahsiletServiceClient(session);
-    const dataResponse = await client.transaction.getApiAppTransactionScorePrediction({ cardRef: id });
+    const dataResponse = await client.transaction.getApiTransactionScorePredictionByCardRef({ cardRef: id });
     return structuredSuccessResponse(dataResponse);
   } catch (error) {
     throw structuredError(error);
