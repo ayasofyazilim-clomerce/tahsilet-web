@@ -72,6 +72,9 @@ importers:
       '@types/google-libphonenumber':
         specifier: ^7.4.30
         version: 7.4.30
+      date-fns:
+        specifier: ^3.6.0
+        version: 3.6.0
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -102,6 +105,9 @@ importers:
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
+      react-hook-form:
+        specifier: 7.53.0
+        version: 7.53.0(react@18.3.1)
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.1(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.5))(@types/node@20.11.24)(typescript@5.3.3)))
@@ -162,7 +168,7 @@ importers:
         version: 0.0.4
       '@novu/api':
         specifier: latest
-        version: 0.6.2(zod@3.24.2)
+        version: 1.6.0
       '@repo/saas':
         specifier: workspace:*
         version: link:../saas
@@ -2523,12 +2529,11 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@novu/api@0.6.2':
-    resolution: {integrity: sha512-AXG9bDWSYysrHyhJ+x2PvFHV/N3PXy7WlsEnx6mSF7bJSqUG/TkQyjoXjiumVBYK0v4s8yJOSFMfvQHZ9pVtBQ==}
+  '@novu/api@1.6.0':
+    resolution: {integrity: sha512-Zi2FzlQw2m5s2rPTrcJ2YuD8Q0P/7H343RsGwyXSqWwajQpjTnWV3us0PzIr8m0oK0H5wDxi9LkGYoHHHFYbfg==}
     hasBin: true
     peerDependencies:
-      '@modelcontextprotocol/sdk': ^1.5.0
-      zod: '>= 3'
+      '@modelcontextprotocol/sdk': '>=1.5.0 <1.10.0'
     peerDependenciesMeta:
       '@modelcontextprotocol/sdk':
         optional: true
@@ -5306,6 +5311,7 @@ packages:
 
   '@tiptap-pro/extension-drag-handle-react@2.11.2':
     resolution: {integrity: sha512-lLgAvdIx+beWHUYmW595HPE/2j9C32d5vUfx7PU8NxywmExUuHcxDnwOmVg7+IGb0i6xF9KwCWG2pM21vFcZng==}
+    deprecated: '"@tiptap-pro/extension-drag-handle-react" was made open source and can now be installed from "@tiptap/extension-drag-handle-react" instead.'
     peerDependencies:
       '@tiptap-pro/extension-drag-handle': ^2.7.7
       '@tiptap/pm': ^2.0.0
@@ -5315,6 +5321,7 @@ packages:
 
   '@tiptap-pro/extension-drag-handle@2.11.2':
     resolution: {integrity: sha512-036yvXvMckZRcnsxzyTZGFz6UhpqR5hp3FOPBAlXX5oiL7CA1Ls8FOBh68RxxVq2uaTvEkhtDVVwfWi3KHqJFg==}
+    deprecated: '"@tiptap-pro/extension-drag-handle" was made open source and can now be installed from "@tiptap/extension-drag-handle" instead.'
     peerDependencies:
       '@tiptap-pro/extension-node-range': ^2.7.7
       '@tiptap/core': ^2.0.0
@@ -5324,6 +5331,7 @@ packages:
 
   '@tiptap-pro/extension-emoji@2.11.2':
     resolution: {integrity: sha512-sK606chqCF7/6r2lysLXKyDjwRHYx+9dZRYTG3q68t+Gc1sLJI9XM4V2nG0BZD54JcONKxfgTt+d56RNiIj5Mg==}
+    deprecated: '"@tiptap-pro/extension-emoji" was made open source and can now be installed from "@tiptap/extension-emoji" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
@@ -5331,6 +5339,7 @@ packages:
 
   '@tiptap-pro/extension-file-handler@2.11.2':
     resolution: {integrity: sha512-ckrizv/pWasIcP+4gzPF44rwdPW/7P+3afSn2kIxy2PGQFBOJa5BFU6j/NobaTPUat2I/NPAzizLPm+9v5LFHA==}
+    deprecated: '"@tiptap-pro/extension-file-handler" was made open source and can now be installed from "@tiptap/extension-file-handler" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
@@ -5344,6 +5353,7 @@ packages:
 
   '@tiptap-pro/extension-table-of-contents@2.11.2':
     resolution: {integrity: sha512-vDB7j/hqN7du1xoyxgatCk3VwViXFTW0HYRWHB6phyQL3gU+oXEL/z3uF37KEUzMp5/8wNb+KNpxoXcAjNRAZw==}
+    deprecated: '"@tiptap-pro/extension-table-of-contents" was made open source and can now be installed from "@tiptap/extension-table-of-contents" instead.'
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
@@ -9296,6 +9306,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch-native@1.6.4:
     resolution: {integrity: sha512-IhOigYzAKHd244OC0JIMIUrjzctirCmPkaIfhDeGcEETWof5zKYUW7e7MYvChGWh/4CJeXEgsRyGzuF334rOOQ==}
@@ -10801,6 +10812,7 @@ packages:
   source-map@0.8.0-beta.0:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
+    deprecated: The work that was done in this beta branch won't be included in future versions
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
@@ -13559,7 +13571,7 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@novu/api@0.6.2(zod@3.24.2)':
+  '@novu/api@1.6.0':
     dependencies:
       zod: 3.24.2
 
