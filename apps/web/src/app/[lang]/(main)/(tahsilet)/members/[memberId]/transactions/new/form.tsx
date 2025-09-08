@@ -317,18 +317,24 @@ export function TransactionForm({memberId, imToken, cmToken}: {memberId: string;
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="Invoice">Invoice</SelectItem>
-                  <SelectItem value="Check">Check</SelectItem>
-                  <SelectItem value="PromissoryNote">Promissory Note</SelectItem>
-                  <SelectItem value="CreditCard">Credit Card</SelectItem>
-                  <SelectItem value="Cash">Cash</SelectItem>
+                  {transactionType === "Debit" ? (
+                    <SelectItem value="Invoice">Invoice</SelectItem>
+                  ) : (
+                    <>
+                      <SelectItem value="Invoice">Invoice</SelectItem>
+                      <SelectItem value="Check">Check</SelectItem>
+                      <SelectItem value="PromissoryNote">Promissory Note</SelectItem>
+                      <SelectItem value="CreditCard">Credit Card</SelectItem>
+                      <SelectItem value="Cash">Cash</SelectItem>
+                    </>
+                  )}
                 </SelectContent>
               </Select>
               <FormMessage />
             </FormItem>
           )}
         />
-        {documentType === "CreditCard" && (
+        {documentType === "CreditCard" && transactionType === "Credit" && (
           <div>
             {terminals.length > 0 && (
               <PosTerminalSelector
@@ -346,7 +352,7 @@ export function TransactionForm({memberId, imToken, cmToken}: {memberId: string;
             ) : null}
           </div>
         )}
-        {documentType !== "CreditCard" && (
+        {documentType !== "CreditCard" && transactionType !== "Credit" && (
           <Button disabled={isPending} type="submit">
             Submit Transaction
           </Button>
