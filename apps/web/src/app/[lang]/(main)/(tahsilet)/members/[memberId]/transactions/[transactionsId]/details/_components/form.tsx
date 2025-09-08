@@ -1,14 +1,17 @@
 "use client";
 
-import type {TahsilEt_Transactions_ListTransactionResponseDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import type {
+  TahsilEt_Transactions_ListTransactionResponseDto,
+  TahsilEt_Transactions_UpdateTransactionDto,
+} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
 import {$TahsilEt_Transactions_UpdateTransactionDto} from "@ayasofyazilim/tahsilet-saas/TAHSILETService";
+import {putTransactionByIdApi} from "@repo/actions/tahsilet/TahsiletService/put-actions";
 import {SchemaForm} from "@repo/ayasofyazilim-ui/organisms/schema-form";
 import {DependencyType} from "@repo/ayasofyazilim-ui/organisms/schema-form/types";
 import {createUiSchemaWithResource} from "@repo/ayasofyazilim-ui/organisms/schema-form/utils";
 import {handlePostResponse} from "@repo/utils/api";
 import {useRouter} from "next/navigation";
 import {useTransition} from "react";
-import {putTransactionByIdApi} from "@repo/actions/tahsilet/TahsiletService/put-actions";
 import type {IdentityServiceResource} from "src/language-data/core/IdentityService";
 
 export default function Form({
@@ -48,9 +51,12 @@ export default function Form({
       },
     },
   });
-
+  const documentTypes = ["Invoice", "Check", "PromissoryNote", "CreditCard", "Cash"];
+  const documentType = !isNaN(transactionData[0].documentType as unknown as number)
+    ? documentTypes[transactionData[0].documentType as keyof typeof documentTypes]
+    : transactionData[0].documentType;
   return (
-    <SchemaForm
+    <SchemaForm<TahsilEt_Transactions_UpdateTransactionDto>
       className="flex flex-col gap-4"
       disabled={isPending}
       filter={{
@@ -58,13 +64,23 @@ export default function Form({
         sort: true,
         keys: ["transactionType", "transactionDate", "debit", "credit", "documentType"],
       }}
-      formData={transactionData[0]}
+      formData={{
+        ...transactionData[0],
+        debit: transactionData[0].debit || 0,
+        credit: transactionData[0].credit || 0,
+        documentType: documentType as unknown as TahsilEt_Transactions_UpdateTransactionDto["documentType"],
+      }}
       onSubmit={({formData}) => {
         startTransition(() => {
           if (!formData) return;
           void putTransactionByIdApi({
             id: transactionId,
-            requestBody: {...formData, credit: formData.credit || 0, debit: formData.debit || 0},
+            requestBody: {
+              ...formData,
+              credit: formData.credit || 0,
+              debit: formData.debit || 0,
+              documentType: formData.documentType,
+            },
           }).then((res) => {
             handlePostResponse(res, router, "../transactions");
           });

@@ -58,7 +58,7 @@ export default function PosTerminalSelector({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 rounded-md border p-2">
       <Header
         activeTerminals={terminals.filter((t) => t.isActive).length}
         disabled={disabled}

@@ -26,7 +26,7 @@ function membersTableActions(
   router: AppRouterInstance,
   grantedPolicies: Record<Policy, boolean>,
 ) {
-  const actions: TanstackTableTableActionsType[] = [];
+  const actions: TanstackTableTableActionsType<TahsilEt_Members_ListMemberResponseDto>[] = [];
   if (isActionGranted(["TahsilEt.Members.Save"], grantedPolicies)) {
     actions.push({
       type: "simple",
@@ -76,6 +76,7 @@ function membersRowActions(
       icon: Bell,
       onConfirm: (row) => {
         void triggerTahsiletRemindPayment({
+          memberName: `${row.name} ${row.surname}`,
           sender: "Tahsilet",
           subject: languageData["Member.RemindPayment.Subject"],
           subscriberId: row.id || "",

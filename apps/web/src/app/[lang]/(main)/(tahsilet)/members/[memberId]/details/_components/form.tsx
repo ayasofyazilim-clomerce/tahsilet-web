@@ -60,6 +60,11 @@ export default function Form({
     <AutoForm
       className="grid gap-4 space-y-0 md:grid-cols-2 lg:grid-cols-2"
       fieldConfig={{
+        name: {
+          inputProps: {
+            disabled: true,
+          },
+        },
         identifier: {
           containerClassName: "pt-3",
         },

@@ -1,13 +1,13 @@
 "use server";
 
+import {getClientManagerToken, getIntegrationManagerToken} from "@repo/actions/tahsilet/FaturaturkaService/actions";
+import {getTransactionApi} from "@repo/actions/tahsilet/TahsiletService/actions";
+import ErrorComponent from "@repo/ui/components/error-component";
 import {isErrorOnRequest} from "@repo/utils/api";
 import {isUnauthorized} from "@repo/utils/policies";
-import ErrorComponent from "@repo/ui/components/error-component";
-import {getTransactionApi} from "@repo/actions/tahsilet/TahsiletService/actions";
-import {getClientManagerToken, getIntegrationManagerToken} from "@repo/actions/tahsilet/FaturaturkaService/actions";
 import {getResourceData} from "src/language-data/core/IdentityService";
 import {getBaseLink} from "src/utils";
-import Form from "./form";
+import {TransactionForm} from "./form";
 
 export default async function Page({
   params,
@@ -40,12 +40,7 @@ export default async function Page({
   }
   return (
     <>
-      <Form
-        cmToken={cmToken.data}
-        imToken={imToken.data.access_token}
-        languageData={languageData}
-        memberId={memberId}
-      />
+      <TransactionForm cmToken={cmToken.data} imToken={imToken.data.access_token} memberId={memberId} />
       <div className="hidden" id="page-description">
         {languageData["Member.Edit.Description"]}
       </div>
